@@ -102,13 +102,13 @@ export default {
     // },
     submit () {
       if (this.username === '') {
-        this.$http.post('http://localhost:5000/deletecus', {cus: this.cusname}).then((response) => {
+        this.$http.post(process.env.IPFLASK + '/deletecus', {cus: this.cusname}).then((response) => {
           this.$swal('--result--', response.body, 'success')
         }, (response) => {
           this.$swal('--result--', response.body, 'error')
         })
       } else {
-        this.$http.post('http://localhost:5000/deleteuser', {cus: this.cusname, user: this.username}).then((response) => {
+        this.$http.post(process.env.IPFLASK + '/deleteuser', {cus: this.cusname, user: this.username}).then((response) => {
           this.$swal('--result--', response.body, 'success')
         }, (response) => {
           this.$swal('--result--', response.body, 'error')

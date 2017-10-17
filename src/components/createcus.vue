@@ -95,13 +95,13 @@ export default {
     // },
     submit () {
       if (this.no_user === '') {
-        this.$http.post('http://localhost:5000/createcus', {full: this.fullname, cus: this.cusname}).then((response) => {
+        this.$http.post(process.env.IPFLASK + '/createcus', {full: this.fullname, cus: this.cusname}).then((response) => {
           this.$swal('--result--', response.body, 'success')
         }, (response) => {
           this.$swal('--result--', response.body, 'error')
         })
       } else {
-        this.$http.post('http://localhost:5000/createuser', {full: this.fullname, cus: this.cusname, user: this.no_user}).then((response) => {
+        this.$http.post(process.env.IPFLASK + '/createuser', {full: this.fullname, cus: this.cusname, user: this.no_user}).then((response) => {
           this.$swal('--result--', response.body, 'success')
         }, (response) => {
           this.$swal('--result--', response.body, 'error')

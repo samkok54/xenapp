@@ -151,7 +151,7 @@ export default {
   },
   methods: {
     getservice () {
-      this.$http.post('http://localhost:5000/Getservice').then((response) => {
+      this.$http.post(process.env.IPFLASK + '/Getservice').then((response) => {
         this.getservicesname = response.body['name']
         this.getservicestype = response.body['type']
         // console.log(this.getservicesname.size())
@@ -187,13 +187,13 @@ export default {
         }
       }
       if (this.username === '') {
-        this.$http.post('http://localhost:5000/de-provisionappcus', {cus: this.cusname, app: this.sendapp}).then((response) => {
+        this.$http.post(process.env.IPFLASK + '/de-provisionappcus', {cus: this.cusname, app: this.sendapp}).then((response) => {
           this.$swal('--result--', response.body, 'success')
         }, (response) => {
           this.$swal('--result--', response.body, 'error')
         })
       } else {
-        this.$http.post('http://localhost:5000/de-provisionappuser', {cus: this.cusname, user: this.username, app: this.sendapp}).then((response) => {
+        this.$http.post(process.env.IPFLASK + '/de-provisionappuser', {cus: this.cusname, user: this.username, app: this.sendapp}).then((response) => {
           this.$swal('--result--', response.body, 'success')
         }, (response) => {
           this.$swal('--result--', response.body, 'error')

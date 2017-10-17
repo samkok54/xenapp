@@ -6,6 +6,12 @@ import xml.etree.ElementTree as ET
 app = Flask(__name__)
 CORS(app)
 
+url = "http://apicpsm.inet.co.th/CortexAPI/Default.aspx"
+headers = {
+    'content-type': "text/xml",
+    'authorization': "Basic Y2xvdWRhZG1pbl9jc3A6bWlzQFBhc3MwMQ==",
+    'cache-control': "no-cache",
+    }
 
 
 @app.route('/Getservice',methods=['POST'])
