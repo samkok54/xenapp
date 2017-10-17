@@ -1,34 +1,38 @@
 <template>
   <div>
-    <img src="../assets/citrix.png" style="margin-top: 20px; width: 250px;">
-    <h1>Testing API Citrix® CloudPortal™</h1>
+    <!-- <img src="../assets/citrix.png" style="margin-top: 20px; width: 250px;"> -->
+     <br>
+    <h1 style="color:white;">Testing API Citrix® CloudPortal™</h1>
     <div class="ui grid" style="margin-top:50px;">
       <div class="four wide column" style="margin-top:50px;">
-        <button class="ui button menus" @click="createcus">
-          create customer with user
-        </button>
-        <button class="ui green button menus" @click="pro">
-          Provision app
-        </button>
+        <div class="ui segment" style="margin-top: -64px; margin-right: 35px;   height: 133%;    background: rgba(7, 27, 56, 0.73); text-align:left;">
+
+          <br>
+          <label style="font-size: 35px; color:white;">MENU</label>
+          <hr>
+
+         <button class="ui button menus menubutton" @click="createcus" style="">
+ <i class="add circle icon"></i> create customer
+</button>
+<button class="ui button menus menubutton" @click="pro"style="">
+   <i class="green genderless icon"></i> Provision app
+</button>
 <!-- <button class="ui button menus" @click="prouser">
   Provision app to user
 </button> -->
-        <button class="ui orange button menus" @click="depro">
-          De-Provision app
-        </button>
-<!-- <button class="ui button menus" @click="deprouser">
-  De-Provision app to user
-</button> -->
-        <button class="ui red button menus" @click="deletes">
-          Delete user or customer
-        </button>
+<button class="ui button menus menubutton" @click="depro">
+ <i class="yellow genderless icon"></i> De-Provision app 
+</button>
+<button class="ui button menus menubutton" @click="deletes">
+ <i class="red remove circle icon"></i> Delete user or customer
+</button>
+</div>
 <!-- <button class="ui button menus" @click="deletecus">
   Delete app to customer
 </button> -->
+        
       </div>
-
-
-      <div class="eight wide column" style="background: rgb(224, 225, 226);">
+      <div class="twelve wide column" style="background: white ;margin-left: -48px;">
         <h1>Create User or Customer</h1>
 <form class="ui form">
       <div class="field">
@@ -48,10 +52,10 @@
                 <input type="checkbox" v-model="check[index]">
                 <label>{{name}}</label>
               </div>
-            </div> -->
+            </div> inverted basic -->
 
           </form>
-        <button class="ui inverted basic button menus" @click="submit">
+        <button class="ui primary button menus" @click="submit">
   Submit
 </button>
 
@@ -142,5 +146,14 @@ a {
   height: 40px;
   width: 218px;
   margin-top: 10px;
+}
+.menubutton {
+  background: none;
+  color: white; 
+  text-align:left;
+  font-size: 14px;
+  margin-left: -19px;
+  width: 400px;
+
 }
 </style>

@@ -22,7 +22,9 @@ export default {
   background-image: url("./assets/bac.jpg");
   /*opacity : 0.2;*/
   height: 150vh;
-  background-size: 100%
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
 }
 h1 {

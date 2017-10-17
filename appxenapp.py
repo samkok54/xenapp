@@ -148,7 +148,6 @@ def createcus():
     data = request.json
     customername = data['cus']
     fullname = data['full']
-
     disable_app = ''
     payload = ("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<request action=\"GET\" version=\"1.0\">\n <customer>\n \t<name>CSP</name>\n  " +
               "<service>\n\t  <name>HostedAppsandDesktops</name>\n\t  \n    </service>\n </customer>\n</request>")
@@ -194,7 +193,10 @@ def createuser():
     customername = data['cus']
     fullname = data['full']
     num = int(data['user'])
-
+    if len(customername) > 3 :
+      username = customername[0]+customername[1]+customername[2]
+    else:
+      username = customername
     disable_app = ''
     payload = ("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<request action=\"GET\" version=\"1.0\">\n <customer>\n \t<name>CSP</name>\n  " +
               "<service>\n\t  <name>HostedAppsandDesktops</name>\n\t  \n    </service>\n </customer>\n</request>")
@@ -220,8 +222,7 @@ def createuser():
     <request action=\"set\" version=\"1.0\">\r\n
     <customer>\r\n
     \t    <fullname>"""+fullname+"""</fullname>\r\n
-          <name>"""+customername+"""</name>\r\n  
-          <code>"""+customername+"""</code>\r\n      
+          <name>"""+customername+"""</name>\r\n    
           <contactname>Admin"""+customername+"""</contactname>\r\n        
           <contactemail>Admin"""+customername+"""@"""+customername+""".local</contactemail>\r\n        
           <primarydomain>"""+customername+""".local</primarydomain> 
@@ -230,7 +231,7 @@ def createuser():
     for i in range(num):
         user = user+"""\r\n
         <user>\r\n
-          \t<name>user%02d</name>\r\n
+          \t<name>"""+username+"""%02d</name>\r\n
           \t<password>\r\n
             \t<password>Hello%02d</password>\r\n
             \t<changeatnextlogon>False</changeatnextlogon>\r\n
