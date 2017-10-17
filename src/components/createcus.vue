@@ -27,10 +27,6 @@
  <i class="red remove circle icon"></i> Delete user or customer
 </button>
 </div>
-<!-- <button class="ui button menus" @click="deletecus">
-  Delete app to customer
-</button> -->
-        
       </div>
       <div class="twelve wide column" style="background: white ;margin-left: -48px;">
         <h1>Create User or Customer</h1>
@@ -47,13 +43,6 @@
         <label style="text-align: left;">Number of user</label>
         <input type="text" v-model="no_user" placeholder="Number of user">
       </div>
-              <!-- <div class="field" v-for="(name,index) in getservicesname" style="text-align: left;">
-              <div class="ui checkbox">
-                <input type="checkbox" v-model="check[index]">
-                <label>{{name}}</label>
-              </div>
-            </div> inverted basic -->
-
           </form>
         <button class="ui primary button menus" @click="submit">
   Submit
