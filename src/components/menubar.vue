@@ -1,0 +1,276 @@
+<template>
+  <div>
+
+  <div class="navbar">
+  <!-- <a href="#home" style="margin-left: 8%;">Home</a>
+  <a href="#news">News</a> -->
+  <b style="float:right; padding-right: 3vh">
+  <button class="ui inverted button" @click="Login" style="font-size: 1.6vh;">Logout</button>
+  </b>
+
+  <b style="float:right; margin-top: 0.5vh;">
+    <div class="ui dropdown">
+   <i class="big world icon"></i>
+   <div class="floating ui red label"  style="
+    width: 3vh;
+    height: 2.5vh;
+    padding-left: 0.7vh;
+    padding-top: 5px;">99</div>
+  <div class="menu" style="margin-top: 1vh;margin-right: -1vh;">
+    <div class="ui error message" >
+      <div class="header">Error</div>
+      <p>You must log-in to see all categories</p>
+    </div>
+    <div class="ui error message" >
+      <div class="header">Error</div>
+      <p>You must log-in to see all categories</p>
+    </div>
+    <div class="ui error message" >
+      <div class="header">Error</div>
+      <p>You must log-in to see all categories</p>
+    </div>
+  </div>
+</div>
+  </b>
+
+  <b style="float:left; margin-left: 15vh;">
+    <div class="item">
+      <img src="../assets/citrix.png" style="width: 10vh; margin-bottom: -2.5vh;">
+    </div>
+  </b>
+
+  <b style="float:left;">
+    <div class="ui inverted secondary pointing menu" style="border: none;">
+    <a :class="nav1" @click="chNav('1')">Home</a>
+    <a :class="nav2" @click="chNav('2')">Messages</a>
+    <a :class="nav3" @click="chNav('3')">Friends</a>
+  </div>
+  </b>
+</div>
+
+<div class="main">
+  <p>Some text some text some text some text..</p>
+</div>
+
+
+<div class="ui grid" style="margin-top: 7vh;">
+
+  <div class="sixteen wide column" style="height: 50vh; margin-top: -2vh;">
+    <img src="../assets/city.jpg" style="width: 100%;height: 50vh;margin-top: -2vh;" >
+  </div>
+
+  <div class="four wide column">
+    <div class="ui segment" style="background: rgba(7, 27, 56, 0.73); text-align:left;">
+
+      <br>
+      <label style="font-size: 35px; color:white;">MENU</label>
+      <hr>
+      <br>
+      <router-link to="/createcus" active-class="active">
+        <f1>
+          <i class="add circle icon" ></i>&emsp;Create Customer
+        </f1>
+      </router-link>
+        <br>
+        <router-link to="/deletes" active-class="active"><f1>
+          <i class="red remove circle icon" ></i>&emsp;Delete Customer</f1>
+        </router-link>
+        <br>
+        <router-link to="/provision_app" active-class="active"><f1>
+          <i class="green genderless icon" ></i>&emsp;Provision app</f1>
+        </router-link>
+        <br> 
+        <router-link to="/deprovision" active-class="active"><f1>
+          <i class="red remove circle icon" ></i>&emsp;Deprovision app</f1>
+        </router-link>
+      </div>
+
+    </div>
+        <div class="twelve wide column" style="background: white ;margin-left: -48px;">
+          <router-view></router-view>
+      </div>
+</div>
+
+
+
+  </div>
+</template>
+
+<script>
+
+$(document).ready(function () {
+  $('.ui.dropdown').dropdown()
+  $('.ui.labeled.icon.sidebar').sidebar('toggle')
+})
+
+export default {
+  data () {
+    return {
+      cusname: '',
+      no_user: '',
+      getservices: '',
+      getservicesname: '',
+      getservicestype: '',
+      fullname: '',
+      check: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      sendapp: [],
+      nav1: 'item active',
+      nav2: 'item',
+      nav3: 'item'
+    }
+  },
+  created () {
+  },
+  methods: {
+    chNav (i) {
+      if (i === '1') {
+        this.nav1 = 'item active'
+        this.nav2 = 'item'
+        this.nav3 = 'item'
+      } else if (i === '2') {
+        this.nav1 = 'item'
+        this.nav2 = 'item active'
+        this.nav3 = 'item'
+      } else if (i === '3') {
+        this.nav1 = 'item'
+        this.nav2 = 'item'
+        this.nav3 = 'item active'
+      }
+    },
+    bar () {
+      $('.ui.labeled.icon.sidebar').sidebar('toggle')
+    },
+    pro () {
+      this.$router.push('/provisionapp')
+    },
+    depro () {
+      this.$router.push('/de-provisionapp')
+    },
+    deletes () {
+      this.$router.push('/deletes')
+    },
+    createcus () {
+      this.$router.push('/createcus')
+    },
+    Login () {
+      this.$router.push('/Login')
+    },
+    // deletecus () {
+    // },
+    submit () {
+      if (this.no_user === '') {
+        this.$http.post(process.env.IPFLASK + '/createcus', {full: this.fullname, cus: this.cusname}).then((response) => {
+          this.$swal('--result--', response.body, 'success')
+        }, (response) => {
+          this.$swal('--result--', response.body, 'error')
+        })
+      } else {
+        this.$http.post(process.env.IPFLASK + '/createuser', {full: this.fullname, cus: this.cusname, user: this.no_user}).then((response) => {
+          this.$swal('--result--', response.body, 'success')
+        }, (response) => {
+          this.$swal('--result--', response.body, 'error')
+        })
+      }
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h1, h2 {
+  font-weight: normal;
+}
+
+f1 {
+  font-size: 20px;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+
+.navbar {
+    position: fixed;
+    z-index: 100;
+    margin: 0em;
+    width: 100%;
+    /*position: fixed;*/
+    /*overflow: hidden;*/
+    background-color: #333;
+    /*position: fixed;  Set the navbar to fixed position */
+    /*top: 0;  Position the navbar at the top of the page */
+    /*width: 100%;  Full width */
+}
+*, *:before, *:after {
+   box-sizing: inherit;
+}
+
+/* Links inside the navbar */
+.navbar b {
+    /*position: fixed;*/
+/*    font-size: 15px;*/
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Main content */
+.main {
+    /*margin-top: 30px;*/ /* Add a top margin to avoid content overlay */
+}
+
+
+.sizemenus {
+ padding-left: 20px;
+ padding-bottom: 20px;
+}
+.navbarwrap{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    /*padding-top: 50px !important;*/
+  }
+.sizeTextMenu{
+    /*background:#EEF5F9 !important;*/
+    font-size: 16px;
+  }
+.athiti {
+    font-family: 'Athiti', sans-serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+  }
+.menus {
+  height: 40px;
+  width: 218px;
+  margin-top: 10px;
+}
+.menubutton {
+  background: none;
+  color: white; 
+  text-align:left;
+  font-size: 14px;
+  margin-left: -19px;
+  width: 400px;
+}
+
+.listItem{
+  color:#000 !important;
+  text-align:left !important;
+  padding-top: 13px !important;
+  padding-bottom: 13px !important;
+  width: 100% !important;
+}
+
+
+</style>

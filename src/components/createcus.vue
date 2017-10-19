@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <img src="../assets/citrix.png" style="margin-top: 20px; width: 250px;"> -->
-     <br>
+    <!--  <br>
     <h1 style="color:white;">Testing API Citrix® CloudPortal™</h1>
     <div class="ui grid" style="margin-top:50px;">
       <div class="four wide column" style="margin-top:50px;">
@@ -17,19 +17,19 @@
 <button class="ui button menus menubutton" @click="pro"style="">
    <i class="green genderless icon"></i> Provision app
 </button>
-<!-- <button class="ui button menus" @click="prouser">
+<! <button class="ui button menus" @click="prouser">
   Provision app to user
 </button> -->
-<button class="ui button menus menubutton" @click="depro">
+<!-- <button class="ui button menus menubutton" @click="depro">
  <i class="yellow genderless icon"></i> De-Provision app 
 </button>
 <button class="ui button menus menubutton" @click="deletes">
  <i class="red remove circle icon"></i> Delete user or customer
 </button>
-</div>
-      </div>
-      <div class="twelve wide column" style="background: white ;margin-left: -48px;">
-        <h1>Create User or Customer</h1>
+</div> -->
+
+<div class="twelve wide column" style="background: white;"> 
+<h1>Create User or Customer</h1>
 <form class="ui form">
       <div class="field">
         <label style="text-align: left;">Full name Customer</label>
@@ -47,11 +47,12 @@
         <button class="ui primary button menus" @click="submit">
   Submit
 </button>
+</div>
 
 
-      </div>
+     <!--  </div>
       <div class="four wide column"></div>
-    </div>
+    </div> -->
 
 <!-- {{check}} -->
 

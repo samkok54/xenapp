@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- <img src="../assets/citrix.png" style="margin-top: 20px;margin-left: -950px;width: 250px;"> -->
-    <br>
-    <h1 style="color:white;">Testing API Citrix® CloudPortal™</h1>
-    <div class="ui grid" style="margin-top:50px;">
+    <!-- br>
+    <h1 style="color:white;">Testing API Citrix® CloudPortal™</h1> -->
+    <!-- <div class="ui grid" style="margin-top:50px;">
       <div class="four wide column" style="margin-top:50px;">
         <div class="ui segment" style="margin-top: -64px; margin-right: 35px;   height: 133%;    background: rgba(7, 27, 56, 0.73); text-align:left;">
 
@@ -16,23 +16,22 @@
 </button>
 <button class="ui button menus menubutton" @click="pro"style="">
    <i class="green genderless icon"></i> Provision app
-</button>
+</button> -->
 <!-- <button class="ui button menus" @click="prouser">
   Provision app to user
 </button> -->
-<button class="ui button menus menubutton" @click="depro">
+<!-- <button class="ui button menus menubutton" @click="depro">
  <i class="yellow genderless icon"></i> De-Provision app 
 </button>
 <button class="ui button menus menubutton" @click="deletes">
  <i class="red remove circle icon"></i> Delete user or customer
 </button>
 </div>
-<!-- <button class="ui button menus" @click="deletecus">
+ --><!-- <button class="ui button menus" @click="deletecus">
   Delete app to customer
 </button> -->
         
-      </div>
-      <div class="twelve wide column" style="background: white ;margin-left: -48px;">
+<!--       <div class="twelve wide column" style="background: white ;margin-left: -48px;"> -->
         <h1>Provisioning</h1>
 <form class="ui form">
           <div class="field">
@@ -77,10 +76,10 @@
 </button>
 
 
-      </div>
+<!--       </div>
       <div class="four wide column"></div>
     </div>
-
+ -->
 <!-- {{check}} -->
 
 <!-- {{sendapp}} -->
