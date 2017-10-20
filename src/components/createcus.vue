@@ -1,69 +1,83 @@
 <template>
   <div>
-    <!-- <img src="../assets/citrix.png" style="margin-top: 20px; width: 250px;"> -->
-    <!--  <br>
-    <h1 style="color:white;">Testing API Citrix® CloudPortal™</h1>
-    <div class="ui grid" style="margin-top:50px;">
-      <div class="four wide column" style="margin-top:50px;">
-        <div class="ui segment" style="margin-top: -64px; margin-right: 35px;   height: 133%;    background: rgba(7, 27, 56, 0.73); text-align:left;">
 
-          <br>
-          <label style="font-size: 35px; color:white;">MENU</label>
-          <hr>
+    <div class="ui segment" style="margin-left: -2.2vh;margin-top: -2vh;margin-right: 1.2vh; height:50vh;">
+      <h1>Customer</h1>
+      <hr style="opacity: 0.3;margin-bottom: 2vh;">
+      <button class="ui button" @click="createUser_Modal()" style="float:left;">
+      <i class="icon users"></i>
+      Create Customer
+      </button>
+    </div>
 
-         <button class="ui button menus menubutton" @click="createcus" style="">
- <i class="add circle icon"></i> create customer
-</button>
-<button class="ui button menus menubutton" @click="pro"style="">
-   <i class="green genderless icon"></i> Provision app
-</button>
-<! <button class="ui button menus" @click="prouser">
-  Provision app to user
-</button> -->
-<!-- <button class="ui button menus menubutton" @click="depro">
- <i class="yellow genderless icon"></i> De-Provision app 
-</button>
-<button class="ui button menus menubutton" @click="deletes">
- <i class="red remove circle icon"></i> Delete user or customer
-</button>
-</div> -->
-
-<div class="twelve wide column" style="background: white;"> 
-<h1>Create User or Customer</h1>
-<form class="ui form">
-      <div class="field">
-        <label style="text-align: left;">Full name Customer</label>
-        <input type="text" v-model="fullname" placeholder="Full Name of Customer">
+    <div class="ui small modal">
+      <i class="close icon" style="
+      color: black;
+      margin-top: 4.2vh;
+      margin-right: 4.2vh;"></i>
+      <div class="header">
+        Create User or Customer
       </div>
-      <div class="field">
-        <label style="text-align: left;">Customer name</label>
-        <input type="text" v-model="cusname" placeholder="Customer Name">
+      <div class="ui grid">
+        <div class="nine wide column">
+          <div class="ui segment" style="margin-top: 0.7vh;margin-left: 1vh;">
+            <form class="ui form">
+              <div class="field">
+                <label style="text-align: left;">Full name Customer</label>
+                <input type="text" v-model="fullname" placeholder="Full Name of Customer">
+              </div>
+              <div class="field">
+                <label style="text-align: left;">Customer name</label>
+                <input type="text" v-model="cusname" placeholder="Customer Name">
+              </div>
+              <div class="field">
+                <label style="text-align: left;">Number of user</label>
+                <input type="text" v-model="no_user" placeholder="Number of user">
+              </div>
+            </form>
+        </div>
       </div>
-      <div class="field">
-        <label style="text-align: left;">Number of user</label>
-        <input type="text" v-model="no_user" placeholder="Number of user">
+
+      <div class="seven wide column">
+          <div class="ui segment" style="margin-top: 0%;margin-right: 1vh;margin-left: -2vh;margin-top: 0.6vh;">
+            <h4 class="ui header">Text Selection</h4>
+              <p>A site can specify text selection styles.</p>
+              <p>Fusce mollis sagittis elit ut maximus. Nullam blandit lacus sit amet luctus euismod. Duis luctus leo vel consectetur consequat. Phasellus ex ligula, pellentesque et neque vitae, elementum placerat eros. Proin eleifend odio nec velit lacinia suscipit. Morbi mollis ante nec dapibus gravida. In tincidunt augue eu elit porta, vel condimentum purus posuere. Maecenas tincidunt, erat sed elementum sagittis, tortor erat faucibus tellus, nec molestie mi purus sit amet tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris a tincidunt metus. Fusce congue metus aliquam ex auctor eleifend.</p>
+          </div>
+          <div class="actions" >
+              <button class="ui primary button menus" @click="submit" style="
+              float: right;
+              margin-top: 1vh;
+              margin-bottom: 2vh;
+              margin-right: 1vh;">
+              Submit
+            </button>
+          </div>
+          <div class="actions" >
+              <button class="ui button menus" @click="createUser_Modal(false)" style="
+              float: right;
+              margin-top: 1vh;
+              margin-bottom: 2vh;
+              margin-right: 0.5vh;">
+              Cancel
+            </button>
+          </div>
       </div>
-          </form>
-        <button class="ui primary button menus" @click="submit">
-  Submit
-</button>
-</div>
 
-
-     <!--  </div>
-      <div class="four wide column"></div>
-    </div> -->
-
-<!-- {{check}} -->
-
-<!-- {{getservices}} -->
-
+    </div>
+  </div>
 
 
   </div>
 </template>
-
 <script>
+
+$(document).ready(function () {
+  $('.ui.dropdown').dropdown('false')
+  $('.ui.labeled.icon.sidebar').sidebar('toggle')
+  $('.ui.modal').modal('false')
+})
+
 export default {
   data () {
     return {
@@ -92,6 +106,9 @@ export default {
     createcus () {
       this.$router.push('/createcus')
     },
+    createUser_Modal () {
+      $('.small.modal').modal('show')
+    },
     // deletecus () {
     // },
     submit () {
@@ -117,6 +134,7 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
+  text-align: left;
 }
 
 ul {
@@ -124,14 +142,22 @@ ul {
   padding: 0;
 }
 
-li {
+
+
+/*element.style {
+    display: block !important;
+    background-color: rgba(0,0,0,0.1);
+}*/
+
+
+/*li {
   display: inline-block;
   margin: 0 10px;
-}
+}*/
 
-a {
+/*a {
   color: #42b983;
-}
+}*//*
 .menus {
   height: 40px;
   width: 218px;
@@ -145,5 +171,9 @@ a {
   margin-left: -19px;
   width: 400px;
 
-}
+}*/
+
+
 </style>
+
+

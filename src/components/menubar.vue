@@ -8,14 +8,14 @@
   <button class="ui inverted button" @click="Login" style="font-size: 1.6vh;">Logout</button>
   </b>
 
-  <b style="float:right; margin-top: 0.5vh;">
+  <b style="float:right; margin-top: 0.8vh;">
     <div class="ui dropdown">
-   <i class="big world icon"></i>
-   <div class="floating ui red label"  style="
+   <i class="big world icon" ></i>
+   <div class="floating ui red label"  @click='notification ()' style="
     width: 3vh;
     height: 2.5vh;
     padding-left: 0.7vh;
-    padding-top: 5px;">99</div>
+    padding-top: 5px;">69</div>
   <div class="menu" style="margin-top: 1vh;margin-right: -1vh;">
     <div class="ui error message" >
       <div class="header">Error</div>
@@ -43,7 +43,7 @@
     <div class="ui inverted secondary pointing menu" style="border: none;">
     <a :class="nav1" @click="chNav('1')">Home</a>
     <a :class="nav2" @click="chNav('2')">Messages</a>
-    <a :class="nav3" @click="chNav('3')">Friends</a>
+    <a :class="nav3" @click="chNav('3')">Contact</a>
   </div>
   </b>
 </div>
@@ -52,55 +52,94 @@
   <p>Some text some text some text some text..</p>
 </div>
 
-
-<div class="ui grid" style="margin-top: 7vh;">
-
-  <div class="sixteen wide column" style="height: 50vh; margin-top: -2vh;">
-    <img src="../assets/city.jpg" style="width: 100%;height: 50vh;margin-top: -2vh;" >
-  </div>
-
-  <div class="four wide column">
-    <div class="ui segment" style="background: rgba(7, 27, 56, 0.73); text-align:left;">
-
-      <br>
-      <label style="font-size: 35px; color:white;">MENU</label>
-      <hr>
+<div class="ui grid" style="margin-top: 5vh;">
+  <div class="three wide column" style="margin-top: -1.5vh; height: 60vh;">
+    <div class="ui secondary vertical menu" style="
+    background: whitesmoke;
+    text-align: left;
+    width: 100%;
+    height: 100%;">
+      <label><h3 style="padding-left: 10%;padding-top: 2vh;
+        padding-bottom: 2vh; 
+        background-color: lightseagreen;
+        color: white;">
+        <i class="heart icon"></i>
+        INET
+        <i class="unordered list icon" style="
+          float: right;
+          padding-right: 5vh;"></i>
+      </h3>
+      </label>
       <br>
       <router-link to="/createcus" active-class="active">
-        <f1>
-          <i class="add circle icon" ></i>&emsp;Create Customer
-        </f1>
+        <a class="item" style="padding-left: 6%;">
+          <i class="large folder open icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh;"></i>
+          Project
+        </a>
       </router-link>
-        <br>
-        <router-link to="/deletes" active-class="active"><f1>
-          <i class="red remove circle icon" ></i>&emsp;Delete Customer</f1>
-        </router-link>
-        <br>
-        <router-link to="/provision_app" active-class="active"><f1>
-          <i class="green genderless icon" ></i>&emsp;Provision app</f1>
-        </router-link>
-        <br> 
-        <router-link to="/deprovision" active-class="active"><f1>
-          <i class="red remove circle icon" ></i>&emsp;Deprovision app</f1>
-        </router-link>
+      <router-link to="/createcus" active-class="active">
+        <a class="item" style="padding-left: 6%;">
+          <i class="large users icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh;"></i>
+          Customer
+        </a>
+      </router-link>
+      <router-link to="/createcus" active-class="active">
+        <a class="item" style="padding-left: 6%;">
+
+          <i class="large in cart icon" style="float: left;padding-right: 4vh; 
+          margin-top: -0.5vh;"></i>
+          Application
+        </a>
+      </router-link>
+      <router-link to="/provision_app" active-class="active">
+        <a class="item" style="padding-left: 6%;">
+           <i class="large add circle icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh;"></i>
+          Provission
+        </a>
+      </router-link>
+      <router-link to="/deprovision" active-class="active">
+        <a class="item" style="padding-left: 6%;">
+           <i class="large minus circle icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh;"></i>
+          De-Provission
+        </a>
+      </router-link>
+      <router-link to="/deletes" active-class="active">
+        <a class="item" style="padding-left: 6%;">
+           <i class="large remove icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh;"></i>
+          Delete-customer
+        </a>
+      </router-link>
+      <div class="ui dropdown item" style="padding-left: 10%;" >
+        <i class="dropdown icon"></i>
+        Display Options
+        <div class="menu">
+          <div class="header">Text Size</div>
+          <a class="item">Small</a>
+          <a class="item">Medium</a>
+          <a class="item">Large</a>
+        </div>
       </div>
+    </div>
+  </div>
+
+
+  <div class="thirteen wide column" style="background-color: none; margin-top: 1.5vh;">
+    <router-view></router-view>
+  </div>
+    
+
+
 
     </div>
-        <div class="twelve wide column" style="background: white ;margin-left: -48px;">
-          <router-view></router-view>
-      </div>
-</div>
-
-
-
   </div>
 </template>
 
 <script>
 
 $(document).ready(function () {
-  $('.ui.dropdown').dropdown()
+  $('.ui.dropdown').dropdown('false')
   $('.ui.labeled.icon.sidebar').sidebar('toggle')
+  $('.ui.modal').modal('false')
 })
 
 export default {
@@ -136,6 +175,9 @@ export default {
         this.nav2 = 'item'
         this.nav3 = 'item active'
       }
+    },
+    notification () {
+      $('.ui.dropdown').dropdown('toggle')
     },
     bar () {
       $('.ui.labeled.icon.sidebar').sidebar('toggle')
@@ -183,7 +225,7 @@ h1, h2 {
 }
 
 f1 {
-  font-size: 20px;
+  /*font-size: 20px;*/
   color: white;
 }
 
@@ -192,10 +234,15 @@ ul {
   padding: 0;
 }
 
-li {
+/*li {
   display: inline-block;
   margin: 0 10px;
-}
+}*/
+
+/*a {
+  padding-left: 20%;
+
+}*/
 
 
 .navbar {

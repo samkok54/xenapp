@@ -17,6 +17,7 @@
     "jquery": "^3.2.1",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-dropdown": "^2.2.12",
+    "semantic-ui-modal": "^2.2.12",
     "semantic-ui-segment": "^2.2.12",
     "semantic-ui-sidebar": "^2.2.12",
     "vue": "^2.4.2",
