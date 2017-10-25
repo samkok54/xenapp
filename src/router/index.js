@@ -19,6 +19,6 @@ export default new Router({
     // { path: '/de-provisionapp', component: deprovisionapp },
     // { path: '/createcus', component: createcus },
     { path: '/login', component: login },
-    { path: '/menubar', component: menubar, children: [{path: '/deletes', component: deletes}, {path: '/provision_app', component: provisionapp}, {path: '/createcus', component: createcus}, {path: '/deprovision', component: deprovisionapp}] }
+    { path: '/menubar', component: menubar, children: [{path: '/', component: createcus}, {path: '/deletes', component: deletes}, {path: '/provision_app', component: provisionapp}, {path: '/createcus', component: createcus}, {path: '/deprovision', component: deprovisionapp}] }
   ]
 })

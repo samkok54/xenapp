@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <div class="ui segment" style="margin-left: -2.2vh;margin-top: -3vh;margin-right: 1.2vh; height:50vh;">
+    <div class="ui segment" style="margin-left: -2.2vh;margin-top: -3vh;margin-right: 1.2vh; height:100%;">
       <h1>Customer</h1>
       <hr style="opacity: 0.3;margin-bottom: 2vh;">
       <button class="ui button" @click="createUser_Modal('show')" style="float:left;">
@@ -44,49 +44,15 @@
             <td>{{getcustomername['id'][index]}}</td>
             <td>{{getcustomername['name'][index]}}</td>
             <td>{{getcustomername['status'][index]}}</td> -->
-            <td>
-              <div class="ui compact selection dropdown">
-                <i class="dropdown icon"></i>
-                <div class="text">Compact</div>
-                <div class="menu">
-                  <div class="item">A</div>
-                  <div class="item">B</div>
-                  <div class="item">C</div>
-                </div>
-              </div>
-             <select class="ui dropdown">
-  <option value="">Gender</option>
-  <option value="1">Male</option>
-  <option value="0">Female</option>
-</select>
-  <div class="ui icon top left pointing dropdown button bose">
-  <i class="wrench icon"></i>
-  <div class="menu">
-    <div class="header">Display Density</div>
-    <div class="item">Comfortable</div>
-    <div class="item">Cozy</div>
-    <div class="item">Compact</div>
-    <div class="ui divider"></div>
-    <div class="item">Settings</div>
-    <div class="item">
-      <i class="dropdown icon"></i>
-      <span class="text">Upload Settings</span>
-      <div class="menu">
-        <div class="item">
-          <i class="check icon"></i>
-          Convert Uploaded Files to PDF
-        </div>
-        <div class="item">
-          <i class="check icon"></i>
-          Digitize Text from Uploaded Files
-        </div>
-      </div>
-    </div>
-    <div class="item">Manage Apps</div>
-    <div class="item">Keyboard Shortcuts</div>
-    <div class="item">Help</div>
-  </div>
-</div>
+            
+            <td>{{customer_test[index]}}</td>
+            <td>bose company</td>
+            <td>69</td>
+            <td>bose.local</td>
+            <td>Running</td>
+            <td> 
+            <DropdownCustomer newMenus='jam' newMenu='eiei' @showAlert="showAlertInCustomer"/>
+
             </td>
           </tr>
 
@@ -173,13 +139,12 @@
   </div>
 </template>
 <script>
-
+import DropdownCustomer from '@/components/dropdown/DropdownCustomer'
 $(document).ready(function () {
-  $('.ui.dropdown.bose ').dropdown()
+  $('.ui.dropdown.bose').dropdown()
   // $('.ui.labeled.icon.sidebar').sidebar('toggle')
   $('.small.modal').modal('hide')
 })
-
 export default {
   data () {
     return {
@@ -195,6 +160,9 @@ export default {
       sendapp: []
     }
   },
+  components: {
+    DropdownCustomer
+  },
   created () {
     this.getcustomer()
   },
@@ -202,6 +170,9 @@ export default {
     // actdrop (status) {
     //   $('.act.dropdown').dropdown('show')
     // },
+    showAlertInCustomer (name) {
+      alert(name)
+    },
     pro () {
       this.$router.push('/provisionapp')
     },

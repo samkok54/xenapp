@@ -8,7 +8,7 @@
 <div class="four wide column" style="padding-top: 18%;">
 <div class="ui segment" style="opacity: 0.99; background: rgba(255,255,255,0.85)">
     <div class="ui two column middle aligned very relaxed stackable grid">
-  <div class="column" style="width: 100%;height: 28vh;padding-top: 5%;">
+  <div class="column" style="width: 100%;height: 100%;padding-top: 5%;">
     <div class="ui form">
       <div class="field">
         <label>Username</label>
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+
 export default {
   data () {
     return {
@@ -51,8 +52,6 @@ export default {
       check: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
       sendapp: []
     }
-  },
-  created () {
   },
   methods: {
     pro () {
@@ -68,7 +67,7 @@ export default {
       this.$router.push('/createcus')
     },
     Login () {
-      this.$router.push('/createcus')
+      this.$router.push('/menubar')
     },
     // deletecus () {
     // },

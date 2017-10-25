@@ -115,6 +115,7 @@ $(document).ready(function () {
   $('.small.modal').modal('hide')
 })
 
+
 export default {
   data () {
     return {

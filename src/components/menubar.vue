@@ -129,7 +129,8 @@
 <script>
 
 $(document).ready(function () {
-  // $('.ui.dropdown').dropdown()
+  $('.ui.dropdown').dropdown()
+  // $('.ui.dropdown.bose').dropdown()
   // $('.act.dropdown').dropdown('hide')
   // $('.ui.labeled.icon.sidebar').sidebar('toggle')
   $('.ui.modal').modal('hide')
