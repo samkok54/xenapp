@@ -4,7 +4,8 @@
     <div class="ui segment" style="margin-left: -2.2vh;margin-top: -3vh;margin-right: 1.2vh; height:100%;">
       <h1>Customer</h1>
       <hr style="opacity: 0.3;margin-bottom: 2vh;">
-      <button class="ui button" @click="createUser_Modal('show')" style="float:left;">
+
+      <button class="ui basic button" @click="createUser_Modal('show')" style="float:left;">
         <i class="cloud upload icon"></i>
         Create Customer
       </button>
@@ -12,6 +13,21 @@
         <i class="minus circle icon"></i>
         Delete Customer
       </button>
+      <button class="ui basic button" style="float:right;">
+        Filter
+      </button>
+      <!-- <div class="ui action input" style="float:right;">
+        <input type="text" placeholder="Search...">
+      </div> -->
+      <!-- <div class="ui input focus" style="float:right; margin-right:1vh;">
+        <input type="text" placeholder="Search...">
+      </div> -->
+      <div class="ui left icon input" style="float:right; margin-right:1vh;">
+        <input type="text" placeholder="Search customers..." style="
+          height: 3.8vh;">
+        <i class="users icon"></i>
+      </div>
+
 
       <table class="ui striped table" style="margin-top: 7vh;">
         <thead>
@@ -27,7 +43,7 @@
             <th>User</th>
             <th>Primary Domain</th>
             <th>Status</th>
-            <th>Action</th>
+            <th style="text-align:center;">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -45,14 +61,13 @@
             <td>{{getcustomername['name'][index]}}</td>
             <td>{{getcustomername['status'][index]}}</td> -->
             
-            <td>{{customer_test[index]}}</td>
+            <td style="color: dodgerblue;">{{customer_test[index]}}</td>
             <td>bose company</td>
             <td>69</td>
             <td>bose.local</td>
             <td>Running</td>
-            <td> 
+            <td style="text-align:center;"> 
             <DropdownCustomer newMenus='jam' newMenu='eiei' @showAlert="showAlertInCustomer"/>
-
             </td>
           </tr>
 
@@ -78,6 +93,10 @@
       </table>
     </div>
 
+
+
+
+
     <div class="ui small modal">
       <i class="close icon"  @click="createUser_Modal('hide all')" style="
       color: black;
@@ -98,10 +117,19 @@
                 <label style="text-align: left;">Customer name</label>
                 <input type="text" v-model="cusname" placeholder="Customer Name">
               </div>
-              <div class="field">
+              <div class="field" v-if="!errors.has('nouser')">
                 <label style="text-align: left;">Number of user</label>
-                <input type="text" v-model="no_user" placeholder="Number of user">
+                <input type="text" v-model="no_user" placeholder="Number of user" name="nouser"   v-validate="'required|decimal'" :class="{'input': true, 'is-danger': errors.has('nouser') }">
               </div>
+              <div class="field error" v-else>
+                <label style="text-align: left;">Number of user</label>
+                <input type="text" v-model="no_user" placeholder="Number of user" name="nouser"   v-validate="'required|decimal'" :class="{'input': true, 'is-danger': errors.has('nouser') }">
+              </div>
+              <p v-show="errors.has('nouser')" style="color:red; font-size:1vh; margin-top: -1vh;
+              margin-left: 0.4vh;">
+             * {{errorHuman[0]['head']}}({{errorHuman[0]['tail']}})
+            </p>
+
             </form>
         </div>
       </div>
@@ -157,7 +185,8 @@ export default {
       fullname: '',
       customer_test: ['bose', 'tara', 'jam', 'both', 'fluke'],
       check: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-      sendapp: []
+      sendapp: [],
+      errorHuman: [{head: 'Please insert number type ', tail: 'Integer'}]
     }
   },
   components: {
@@ -200,19 +229,46 @@ export default {
       })
     },
     submit () {
-      if (this.no_user === '') {
-        this.$http.post(process.env.IPFLASK + '/createcus', {full: this.fullname, cus: this.cusname}).then((response) => {
-          this.$swal('--result--', response.body, 'success')
-        }, (response) => {
-          this.$swal('--result--', response.body, 'error')
-        })
-      } else {
-        this.$http.post(process.env.IPFLASK + '/createuser', {full: this.fullname, cus: this.cusname, user: this.no_user}).then((response) => {
-          this.$swal('--result--', response.body, 'success')
-        }, (response) => {
-          this.$swal('--result--', response.body, 'error')
-        })
-      }
+      this.$validator.validateAll().then((result) => {
+        if (!result) {
+          this.$swal('ไม่สามารถส่งคำขอได้', 'กรุณาตรวจสอบข้อมูลค่ะ', 'warning')
+          // return
+        } else {
+          // this.$http.post(process.env.IPFLASK + '/Seminar_insertDetail', {data: this.editJson()}).then((response) => {
+          //   this.$swal('Success!', 'การส่งข้อมูลสำเร็จ', 'success')
+          // }, (response) => {
+          //   this.$swal('error!', 'การส่งข้อมูลไม่สำเร็จ', 'error')
+          // })
+          if (this.no_user === '') {
+            this.$http.post(process.env.IPFLASK + '/createcus', {full: this.fullname, cus: this.cusname}).then((response) => {
+              this.$swal('--result--', response.body, 'success')
+            }, (response) => {
+              this.$swal('--result--', response.body, 'error')
+            })
+          } else {
+            this.$http.post(process.env.IPFLASK + '/createuser', {full: this.fullname, cus: this.cusname, user: this.no_user}).then((response) => {
+              this.$swal('--result--', response.body, 'success')
+            }, (response) => {
+              this.$swal('--result--', response.body, 'error')
+            })
+          }
+          // if (this.no_user === '') {
+          //   this.$http.post(process.env.IPFLASK + '/createcus', {full: this.fullname, cus: this.cusname}).then((response) => {
+          //     this.$swal('--result--', response.body, 'success')
+          //   }, (response) => {
+          //     this.$swal('--result--', response.body, 'error')
+          //   })
+          // } else {
+          //   this.$http.post(process.env.IPFLASK + '/createuser', {full: this.fullname, cus: this.cusname, user: this.no_user}).then((response) => {
+          //     this.$swal('--result--', response.body, 'success')
+          //   }, (response) => {
+          //     this.$swal('--result--', response.body, 'error')
+          //   })
+          // }
+        }
+      }).catch(() => {
+        alert('jam')
+      })
     }
   }
 }
@@ -225,11 +281,23 @@ h1, h2 {
   text-align: left;
 }
 
+/*f_blue {
+  font-weight: normal;
+  text-align: left;
+}*/
+
 ul {
   list-style-type: none;
   padding: 0;
 }
 
+
+.errorUI{
+    position: absolute !important;
+    margin-top: -35px !important;
+    /*margin-left: 15px !important;*/
+    font-weight: normal;
+  }
 
 
 /*element.style {

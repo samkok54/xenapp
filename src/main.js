@@ -7,9 +7,11 @@ import 'semantic-ui-css/semantic.min.css'
 import 'semantic-ui-css/semantic.min.js'
 import VueResource from 'vue-resource/dist/vue-resource.min.js'
 import VueSweetalert2 from 'vue-sweetalert2'
+import VeeValidate from 'vee-validate'
 
 Vue.use(VueSweetalert2)
 Vue.use(VueResource)
+Vue.use(VeeValidate)
 
 Vue.config.productionTip = false
 

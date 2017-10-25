@@ -9,29 +9,7 @@
   </b>
 
   <b style="float:right; margin-top: 0.8vh;">
-
-<!--   <div class="ui dropdown noti" >
-   <i class="big world icon" ></i>
-   <div class="floating ui red label" style="
-    width: 3vh;
-    height: 2.5vh;
-    padding-left: 0.7vh;
-    padding-top: 5px;">69</div>
-  <div class="menu" style="margin-top: 1vh;margin-right: -1vh;">
-    <div class="ui error message" >
-      <div class="header">Error</div>
-      <p>You must log-in to see all categories</p>
-    </div>
-    <div class="ui error message" >
-      <div class="header">Error</div>
-      <p>You must log-in to see all categories</p>
-    </div>
-    <div class="ui error message" >
-      <div class="header">Error</div>
-      <p>You must log-in to see all categories</p>
-    </div>
-  </div>
-</div> -->
+    <noti/>
   </b>
 
   <b style="float:left; margin-left: 15vh;">
@@ -85,7 +63,7 @@
           Customer
         </a>
       </router-link>
-      <router-link to="/createcus" active-class="active">
+      <router-link to="/Application" active-class="active">
         <a class="item" style="padding-left: 6%;">
 
           <i class="large in cart icon" style="float: left;padding-right: 4vh; 
@@ -127,7 +105,7 @@
 </template>
 
 <script>
-
+import noti from '@/components/dropdown/noti'
 $(document).ready(function () {
   $('.ui.dropdown').dropdown()
   // $('.ui.dropdown.bose').dropdown()
@@ -152,7 +130,9 @@ export default {
       nav3: 'item'
     }
   },
-
+  components: {
+    noti
+  },
   methods: {
     chNav (i) {
       if (i === '1') {

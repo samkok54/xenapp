@@ -2,26 +2,20 @@
   <div>
 
     <div class="ui segment" style="margin-left: -2.2vh;margin-top: -3vh;margin-right: 1.2vh; height:50vh;">
-      <h1>Customer</h1>
+      <h1>Application</h1>
       <hr style="opacity: 0.3;margin-bottom: 2vh;">
-      <button class="ui button" @click="createUser_Modal('show')" style="float:left;">
+      <!-- <button class="ui button" @click="createUser_Modal('show')" style="float:left;">
         <i class="cloud upload icon"></i>
         Create Customer
       </button>
       <button class="negative ui button" style="float:left;">
         <i class="minus circle icon"></i>
         Delete Customer
-      </button>
+      </button> -->
 
-      <table class="ui striped table" style="margin-top: 7vh;">
+      <!-- <table class="ui striped table" style="margin-top: 0vh;">
         <thead>
           <tr>
-            <th style="width: 1vh;">
-              <div class="ui checkbox">
-                <input type="checkbox" name="example">
-                <label></label>
-              </div>
-            </th>
             <th>Name</th>
             <th>Date Joined</th>
             <th>E-mail</th>
@@ -30,21 +24,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item,index) in getcustomername['name']">
-            <td>
-              <div class="ui checkbox">
-                <input type="checkbox" name="example">
-                <label></label>
-              </div>
-            </td>
-            <td>{{getcustomername['name'][index]}}</td>
-            <td>{{getcustomername['fullname'][index]}}</td>
-            <td>{{getcustomername['id'][index]}}</td>
-            <td>{{getcustomername['name'][index]}}</td>
-            <td>{{getcustomername['status'][index]}}</td>
+          <tr v-for="(item,index) in customer_test">
+            <td>{{item}}</td>
+            <td>bose</td>
+            <td>b0se</td>
+            <td>60</td>
+            <td>test</td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
+      
+
+
+      
     </div>
 
     <div class="ui small modal">
@@ -114,7 +106,6 @@ $(document).ready(function () {
   $('.ui.labeled.icon.sidebar').sidebar('toggle')
   $('.small.modal').modal('hide')
 })
-
 
 export default {
   data () {
