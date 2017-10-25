@@ -23,74 +23,14 @@
               </div>
             </th>
             <th>Name</th>
-            <th>Fullname</th>
-            <th>User</th>
-            <th>Primary Domain</th>
+            <th>Date Joined</th>
+            <th>E-mail</th>
+            <th>Called</th>
             <th>Status</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <!-- <tr v-for="(item,index) in getcustomername['name']"> -->
-          <tr v-for="(item,index) in customer_test">
-            <td>
-              <div class="ui checkbox">
-                <input type="checkbox" name="example">
-                <label></label>
-              </div>
-            </td>
-            <!-- <td>{{getcustomername['name'][index]}}</td>
-            <td>{{getcustomername['fullname'][index]}}</td>
-            <td>{{getcustomername['id'][index]}}</td>
-            <td>{{getcustomername['name'][index]}}</td>
-            <td>{{getcustomername['status'][index]}}</td> -->
-            <td>
-              <div class="ui compact selection dropdown">
-                <i class="dropdown icon"></i>
-                <div class="text">Compact</div>
-                <div class="menu">
-                  <div class="item">A</div>
-                  <div class="item">B</div>
-                  <div class="item">C</div>
-                </div>
-              </div>
-             <select class="ui dropdown">
-  <option value="">Gender</option>
-  <option value="1">Male</option>
-  <option value="0">Female</option>
-</select>
-  <div class="ui icon top left pointing dropdown button bose">
-  <i class="wrench icon"></i>
-  <div class="menu">
-    <div class="header">Display Density</div>
-    <div class="item">Comfortable</div>
-    <div class="item">Cozy</div>
-    <div class="item">Compact</div>
-    <div class="ui divider"></div>
-    <div class="item">Settings</div>
-    <div class="item">
-      <i class="dropdown icon"></i>
-      <span class="text">Upload Settings</span>
-      <div class="menu">
-        <div class="item">
-          <i class="check icon"></i>
-          Convert Uploaded Files to PDF
-        </div>
-        <div class="item">
-          <i class="check icon"></i>
-          Digitize Text from Uploaded Files
-        </div>
-      </div>
-    </div>
-    <div class="item">Manage Apps</div>
-    <div class="item">Keyboard Shortcuts</div>
-    <div class="item">Help</div>
-  </div>
-</div>
-            </td>
-          </tr>
-
-          <!-- <tr v-for="(item,index) in getcustomername['name']">
+          <tr v-for="(item,index) in getcustomername['name']">
             <td>
               <div class="ui checkbox">
                 <input type="checkbox" name="example">
@@ -102,12 +42,7 @@
             <td>{{getcustomername['id'][index]}}</td>
             <td>{{getcustomername['name'][index]}}</td>
             <td>{{getcustomername['status'][index]}}</td>
-            <td>
-              
-            </td>
-
-          </tr> -->
-
+          </tr>
         </tbody>
       </table>
     </div>
@@ -175,8 +110,8 @@
 <script>
 
 $(document).ready(function () {
-  $('.ui.dropdown.bose ').dropdown()
-  // $('.ui.labeled.icon.sidebar').sidebar('toggle')
+  $('.ui.dropdown').dropdown('hide')
+  $('.ui.labeled.icon.sidebar').sidebar('toggle')
   $('.small.modal').modal('hide')
 })
 
@@ -199,9 +134,6 @@ export default {
     this.getcustomer()
   },
   methods: {
-    // actdrop (status) {
-    //   $('.act.dropdown').dropdown('show')
-    // },
     pro () {
       this.$router.push('/provisionapp')
     },
@@ -258,38 +190,6 @@ ul {
   list-style-type: none;
   padding: 0;
 }
-
-
-
-/*element.style {
-    display: block !important;
-    background-color: rgba(0,0,0,0.1);
-}*/
-
-
-/*li {
-  display: inline-block;
-  margin: 0 10px;
-}*/
-
-/*a {
-  color: #42b983;
-}*//*
-.menus {
-  height: 40px;
-  width: 218px;
-  margin-top: 10px;
-}
-.menubutton {
-  background: none;
-  color: white; 
-  text-align:left;
-  font-size: 14px;
-  margin-left: -19px;
-  width: 400px;
-
-}*/
-
 
 </style>
 

@@ -9,9 +9,10 @@
   </b>
 
   <b style="float:right; margin-top: 0.8vh;">
-    <div class="ui dropdown">
+
+<!--   <div class="ui dropdown noti" >
    <i class="big world icon" ></i>
-   <div class="floating ui red label"  @click='notification ()' style="
+   <div class="floating ui red label" style="
     width: 3vh;
     height: 2.5vh;
     padding-left: 0.7vh;
@@ -30,7 +31,7 @@
       <p>You must log-in to see all categories</p>
     </div>
   </div>
-</div>
+</div> -->
   </b>
 
   <b style="float:left; margin-left: 15vh;">
@@ -53,8 +54,9 @@
 </div>
 
 <div class="ui grid" style="margin-top: 5vh;">
-  <div class="three wide column" style="margin-top: -1.5vh; height: 60vh;">
-    <div class="ui secondary vertical menu" style="
+  <div class="sixteen wide column" style="margin-top: -2vh;"></div>
+  <div class="three wide column" style="height: 60vh; margin-top: -1vh;">
+    <div class="ui secondary vertical menu" style=" margin-top: -1.5vh;
     background: whitesmoke;
     text-align: left;
     width: 100%;
@@ -64,7 +66,7 @@
         background-color: lightseagreen;
         color: white;">
         <i class="heart icon"></i>
-        INET
+        INET Devops
         <i class="unordered list icon" style="
           float: right;
           padding-right: 5vh;"></i>
@@ -109,16 +111,6 @@
           Delete-customer
         </a>
       </router-link>
-      <div class="ui dropdown item" style="padding-left: 10%;" >
-        <i class="dropdown icon"></i>
-        Display Options
-        <div class="menu">
-          <div class="header">Text Size</div>
-          <a class="item">Small</a>
-          <a class="item">Medium</a>
-          <a class="item">Large</a>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -137,9 +129,10 @@
 <script>
 
 $(document).ready(function () {
-  $('.ui.dropdown').dropdown('false')
-  $('.ui.labeled.icon.sidebar').sidebar('toggle')
-  $('.ui.modal').modal('false')
+  // $('.ui.dropdown').dropdown()
+  // $('.act.dropdown').dropdown('hide')
+  // $('.ui.labeled.icon.sidebar').sidebar('toggle')
+  $('.ui.modal').modal('hide')
 })
 
 export default {
@@ -158,8 +151,7 @@ export default {
       nav3: 'item'
     }
   },
-  created () {
-  },
+
   methods: {
     chNav (i) {
       if (i === '1') {
@@ -176,11 +168,12 @@ export default {
         this.nav3 = 'item active'
       }
     },
-    notification () {
-      $('.ui.dropdown').dropdown('toggle')
+    notification (status) {
+      // $('.noti.dropdown').dropdown('show')
+      // $('.act.dropdown').dropdown('hide')
     },
     bar () {
-      $('.ui.labeled.icon.sidebar').sidebar('toggle')
+      // $('.ui.labeled.icon.sidebar').sidebar('toggle')
     },
     pro () {
       this.$router.push('/provisionapp')
@@ -279,18 +272,14 @@ ul {
 }
 
 
-.sizemenus {
+/*.sizemenus {
  padding-left: 20px;
  padding-bottom: 20px;
-}
+}*/
 .navbarwrap{
     padding-left: 2rem;
     padding-right: 2rem;
     /*padding-top: 50px !important;*/
-  }
-.sizeTextMenu{
-    /*background:#EEF5F9 !important;*/
-    font-size: 16px;
   }
 .athiti {
     font-family: 'Athiti', sans-serif !important;
@@ -311,13 +300,13 @@ ul {
   width: 400px;
 }
 
-.listItem{
+/*.listItem{
   color:#000 !important;
   text-align:left !important;
   padding-top: 13px !important;
   padding-bottom: 13px !important;
   width: 100% !important;
-}
+}*/
 
 
 </style>
