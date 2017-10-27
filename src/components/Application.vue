@@ -1,42 +1,35 @@
 <template>
   <div>
 
-    <div class="ui segment" style="margin-left: -2.2vh;margin-top: -3vh;margin-right: 1.2vh; height:50vh;">
-      <h1>Application</h1>
-      <hr style="opacity: 0.3;margin-bottom: 2vh;">
-      <!-- <button class="ui button" @click="createUser_Modal('show')" style="float:left;">
-        <i class="cloud upload icon"></i>
-        Create Customer
-      </button>
-      <button class="negative ui button" style="float:left;">
-        <i class="minus circle icon"></i>
-        Delete Customer
-      </button> -->
-
-      <!-- <table class="ui striped table" style="margin-top: 0vh;">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Date Joined</th>
-            <th>E-mail</th>
-            <th>Called</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(item,index) in customer_test">
-            <td>{{item}}</td>
-            <td>bose</td>
-            <td>b0se</td>
-            <td>60</td>
-            <td>test</td>
-          </tr>
-        </tbody>
-      </table> -->
-      
+    <div class="ui segment" style="margin-left: -2.2vh;margin-top: -3vh;margin-right: 1.2vh; height:100%;">
+      <h1 class="ui dividing header">Application</h1>
+      <h2 class="ui header">XenApp</h2>
+       <table class="ui blue celled padded table">
+         <tr >
+          <td v-for="(app,index) in XenApp">
+            <img class="ui image small" :src="app['pic']"><br>
+           <b>{{app['name']}}</b>
+          <br>Status : Active
+         </td>
+         </tr>
+       </table>
 
 
-      
+      <h2 class="ui header">XenDesktop</h2>
+      <table class="ui red celled padded table">
+        <tr>
+          <td v-for="(app,index) in XenDesktops">
+            <img class="ui image small" :src="app['pic']"><br>
+           <b>{{app['name']}}</b>
+           <br>Status : Active
+         </td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         </tr>
+      </table>
+
     </div>
 
     <div class="ui small modal">
@@ -118,8 +111,25 @@ export default {
       getservicestype: '',
       fullname: '',
       customer_test: ['bose', 'tara', 'jam', 'both', 'fluke'],
-      check: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
-      sendapp: []
+      // check: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      // sendapp: [],
+      XenApp: [
+      {name: 'google chrome', pic: '../../static/googlech.png'},
+      {name: 'paint', pic: '../../static/paint.png'},
+      {name: 'calculator', pic: '../../static/calculator.png'},
+      {name: 'Notepad', pic: '../../static/notepad.png'},
+      {name: 'LibreOffice Writer', pic: '../../static/libreblue.png'},
+      {name: 'LibreOffice Calc', pic: '../../static/libregreen.png'},
+      {name: 'LibreOffice Impress', pic: '../../static/librered.png'},
+      {name: 'windows Media Player', pic: '../../static/winmedia.png'}
+      ],
+      XenDesktops: [
+      {name: 'Window 7', pic: '../../static/win2007.png'},
+      {name: 'Window 8', pic: '../../static/win10.png'},
+      {name: 'Window 10', pic: '../../static/win10.png'},
+      {name: 'Window 12', pic: '../../static/win2012.png'}
+      ]
+      // url: '../../static/googlech.png'
     }
   },
   created () {
@@ -181,6 +191,19 @@ h1, h2 {
 ul {
   list-style-type: none;
   padding: 0;
+}
+.small {
+  height: 90px !important;
+  width: 90px !important;
+}
+td {
+  width: 150px;
+  padding-top: 2vh !important;
+}
+td img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 </style>

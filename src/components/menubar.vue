@@ -34,6 +34,8 @@
 <div class="ui grid" style="margin-top: 5vh;">
   <div class="sixteen wide column" style="margin-top: -2vh;"></div>
   <div class="three wide column" style="height: 60vh; margin-top: -1vh;">
+
+
     <div class="ui secondary vertical menu" style=" margin-top: -1.5vh;
     background: whitesmoke;
     text-align: left;
@@ -51,42 +53,23 @@
       </h3>
       </label>
       <br>
-      <router-link to="/createcus" active-class="active">
-        <a class="item" style="padding-left: 6%;">
-          <i class="large folder open icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh;"></i>
+      <router-link to="/project" active-class="active">
+        <a :class="stateP" @click="clickChSidebar('p')">
+          <i class="large folder open icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh; "></i>
           Project
         </a>
       </router-link>
       <router-link to="/createcus" active-class="active">
-        <a class="item" style="padding-left: 6%;">
+        <a :class="stateC" @click="clickChSidebar('c')">
           <i class="large users icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh;"></i>
           Customer
         </a>
       </router-link>
       <router-link to="/Application" active-class="active">
-        <a class="item" style="padding-left: 6%;">
-
+        <a :class="stateA" @click="clickChSidebar('a')">
           <i class="large in cart icon" style="float: left;padding-right: 4vh; 
           margin-top: -0.5vh;"></i>
           Application
-        </a>
-      </router-link>
-      <router-link to="/provision_app" active-class="active">
-        <a class="item" style="padding-left: 6%;">
-           <i class="large add circle icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh;"></i>
-          Provission
-        </a>
-      </router-link>
-      <router-link to="/deprovision" active-class="active">
-        <a class="item" style="padding-left: 6%;">
-           <i class="large minus circle icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh;"></i>
-          De-Provission
-        </a>
-      </router-link>
-      <router-link to="/deletes" active-class="active">
-        <a class="item" style="padding-left: 6%;">
-           <i class="large remove icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh;"></i>
-          Delete-customer
         </a>
       </router-link>
     </div>
@@ -97,10 +80,8 @@
     <router-view></router-view>
   </div>
     
-
-
-
     </div>
+
   </div>
 </template>
 
@@ -127,7 +108,10 @@ export default {
       sendapp: [],
       nav1: 'item active',
       nav2: 'item',
-      nav3: 'item'
+      nav3: 'item',
+      stateA: 'item sidebarleft',
+      stateP: 'item sidebarleft',
+      stateC: 'item sidebarleft active'
     }
   },
   components: {
@@ -186,6 +170,24 @@ export default {
         }, (response) => {
           this.$swal('--result--', response.body, 'error')
         })
+      }
+    },
+    clickChSidebar (state) {
+      if (state === 'a') {
+        this.stateD = 'item sidebarleft'
+        this.stateA = 'item sidebarleft active'
+        this.stateC = 'item sidebarleft'
+        this.stateP = 'item sidebarleft'
+      } else if (state === 'p') {
+        this.stateD = 'item sidebarleft'
+        this.stateA = 'item sidebarleft'
+        this.stateC = 'item sidebarleft'
+        this.stateP = 'item sidebarleft active'
+      } else if (state === 'c') {
+        this.stateD = 'item sidebarleft'
+        this.stateA = 'item sidebarleft'
+        this.stateC = 'item sidebarleft active'
+        this.stateP = 'item sidebarleft'
       }
     }
   }
@@ -271,6 +273,11 @@ ul {
   height: 40px;
   width: 218px;
   margin-top: 10px;
+}
+.sidebarleft {
+  padding-left: 6% !important;
+  margin-right: 0vh !important; 
+  margin-bottom: 0.5vh !important;
 }
 .menubutton {
   background: none;

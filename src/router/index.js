@@ -4,6 +4,7 @@ import Application from '@/components/Application'
 import deletes from '@/components/deletes'
 // import indexs from '@/components/indexs'
 import provisionapp from '@/components/provision_app'
+import project from '@/components/project'
 import deprovisionapp from '@/components/deprovision'
 import createcus from '@/components/createcus'
 import login from '@/components/login'
@@ -20,6 +21,16 @@ export default new Router({
     // { path: '/de-provisionapp', component: deprovisionapp },
     // { path: '/createcus', component: createcus },
     { path: '/login', component: login },
-    { path: '/menubar', component: menubar, children: [{path: '/', component: createcus}, {path: '/deletes', component: deletes}, {path: '/provision_app', component: provisionapp}, {path: '/createcus', component: createcus}, {path: '/deprovision', component: deprovisionapp}, {path: '/Application', component: Application}] }
+    { path: '/menubar',
+      component: menubar,
+      children: [{path: '/', component: createcus},
+        {path: '/deletes', component: deletes},
+        {path: '/provision_app/:customer', component: provisionapp},
+        {path: '/createcus', component: createcus},
+        {path: '/deprovision/:customer', component: deprovisionapp},
+        {path: '/Application', component: Application},
+        {path: '/project', component: project}
+      ]
+    }
   ]
 })

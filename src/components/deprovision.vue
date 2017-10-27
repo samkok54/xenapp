@@ -1,8 +1,10 @@
 <template>
   <div>
 
-    <div class="ui segment" style="margin-left: -2.2vh;margin-top: -2vh;margin-right: 1.2vh;">
-      <h1>De-Provisioning</h1>
+    <div class="ui segment" style="margin-left: -2.2vh;margin-top: -3vh;margin-right: 1.2vh; height:100%;">
+      <h1>Deprovission {{customer_name}}</h1>
+      <hr style="opacity: 0.3;margin-bottom: 2vh;">
+
       <form class="ui form">
         <div class="field">
           <label style="text-align: left;">Customer name</label>
@@ -63,10 +65,12 @@ export default {
       selectall: '',
       selectallvdi: '',
       selectallxenapp: '',
-      vdiIndex: ''
+      vdiIndex: '',
+      customer_name: ''
     }
   },
   created () {
+    this.customer_name = this.$route.params.customer
     this.getservice()
   },
   watch: {
@@ -122,20 +126,6 @@ export default {
         this.getservicestype = 'error'
       })
     },
-    pro () {
-      this.$router.push('/provisionapp')
-    },
-    depro () {
-      this.$router.push('/de-provisionapp')
-    },
-    deletes () {
-      this.$router.push('/deletes')
-    },
-    createcus () {
-      this.$router.push('/createcus')
-    },
-    // deletecus () {
-    // },
     submit () {
       var k = 0
       for (var i = 0; i < 16; i++) {

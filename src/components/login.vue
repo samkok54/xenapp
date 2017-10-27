@@ -10,6 +10,13 @@
     <div class="ui two column middle aligned very relaxed stackable grid">
   <div class="column" style="width: 100%;height: 100%;padding-top: 5%;">
     <div class="ui form">
+
+      <h1>
+        <i class="smile icon"></i>Dev-ops
+      </h1>
+
+      <div class="ui divider"></div>
+      
       <div class="field">
         <label>Username</label>
         <div class="ui left icon input">
@@ -24,7 +31,7 @@
           <i class="lock icon"></i>
         </div>
       </div>
-      <div class="ui blue submit button" style="margin-top: 5%; width: 12vh;" @click="Login">Login </div>
+      <div class="ui blue submit button" style="margin-top: 3%; width: 100%;" @click="Login"><h4>Login</h4></div>
     </div>
   </div>
   </div>

@@ -1,8 +1,10 @@
 <template>
   <div>
 
-    <div class="ui segment" style="margin-left: -2.2vh;margin-top: -2vh;margin-right: 1.2vh;">
-      <h1>Provission</h1>
+    <div class="ui segment" style="margin-left: -2.2vh;margin-top: -3vh;margin-right: 1.2vh; height:100%;">
+      <h1>Provission {{customer_name}}</h1>
+      <hr style="opacity: 0.3;margin-bottom: 2vh;">
+
       <form class="ui form">
         <div class="field">
           <label style="text-align: left;">Customer name</label>
@@ -62,10 +64,12 @@ export default {
       sendapp: [],
       selectall: '',
       selectallvdi: '',
-      selectallxenapp: ''
+      selectallxenapp: '',
+      customer_name: ''
     }
   },
   created () {
+    this.customer_name = this.$route.params.customer
     this.getservice()
   },
   watch: {
@@ -121,20 +125,6 @@ export default {
         this.getservicestype = 'error'
       })
     },
-    pro () {
-      this.$router.push('/provisionapp')
-    },
-    depro () {
-      this.$router.push('/de-provisionapp')
-    },
-    deletes () {
-      this.$router.push('/deletes')
-    },
-    createcus () {
-      this.$router.push('/createcus')
-    },
-    // deletecus () {
-    // },
     submit () {
       var k = 0
       this.sendapp = []
@@ -174,25 +164,4 @@ ul {
   padding: 0;
 }
 
-/*li {
-  display: inline-block;
-  margin: 0 10px;
-}
-*/
-/*a {
-  color: #42b983;
-}*/
-/*.menus {
-  height: 40px;
-  width: 218px;
-  margin-top: 10px;
-}
-.menubutton {
-  background: none;
-  color: white; 
-  text-align:left;
-  font-size: 14px;
-  margin-left: -19px;
-  width: 400px;
-}*/
 </style>

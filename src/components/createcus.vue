@@ -2,14 +2,12 @@
   <div>
 
     <div class="ui segment" style="margin-left: -2.2vh;margin-top: -3vh;margin-right: 1.2vh; height:100%;">
-      <h1>Customer</h1>
-      <hr style="opacity: 0.3;margin-bottom: 2vh;">
-
+      <h1 class="ui dividing header">Customer</h1>
       <button class="ui basic button" @click="createUser_Modal('show')" style="float:left;">
         <i class="cloud upload icon"></i>
         Create Customer
       </button>
-      <button class="negative ui button" style="float:left;">
+      <button class="negative ui button" @click="deleteUser_Modal('show')" style="float:left;">
         <i class="minus circle icon"></i>
         Delete Customer
       </button>
@@ -29,12 +27,12 @@
       </div>
 
 
-      <table class="ui striped table" style="margin-top: 7vh;">
+      <table class="ui teal striped table" style="margin-top: 7vh;">
         <thead>
           <tr>
             <th style="width: 1vh;">
               <div class="ui checkbox">
-                <input type="checkbox" name="example">
+                <input type="checkbox" name="selectall" v-model="selectall">
                 <label></label>
               </div>
             </th>
@@ -48,10 +46,10 @@
         </thead>
         <tbody>
           <!-- <tr v-for="(item,index) in getcustomername['name']"> -->
-          <tr v-for="(item,index) in customer_test">
+          <tr v-for="(item,index) in customer_test" >
             <td>
               <div class="ui checkbox">
-                <input type="checkbox" name="example">
+                <input type="checkbox" v-model="check[index]">
                 <label></label>
               </div>
             </td>
@@ -67,7 +65,7 @@
             <td>bose.local</td>
             <td>Running</td>
             <td style="text-align:center;"> 
-            <DropdownCustomer newMenus='jam' newMenu='eiei' @showAlert="showAlertInCustomer"/>
+            <DropdownCustomer customer='bose' @showAlert="showAlertInCustomer"/>
             </td>
           </tr>
 
@@ -94,7 +92,21 @@
     </div>
 
 
-
+    <div class="ui mini modal">
+      <div class="header">Delete Your Customer</div>
+      <div class="content">
+        <p>Are you sure you want to delete your customer</p>
+        </div>
+        <div class="actions">
+          <button class="negative ui button" @click="deleteUser_Modal('hide all')">
+            No
+          </button>
+          <button class="ui positive right labeled icon button" @click="submit_delete()">
+            <i class="checkmark icon"></i>
+            Yes
+          </button>
+      </div>
+    </div>
 
 
     <div class="ui small modal">
@@ -141,7 +153,7 @@
               <p>Fusce mollis sagittis elit ut maximus. Nullam blandit lacus sit amet luctus euismod. Duis luctus leo vel consectetur consequat. Phasellus ex ligula, pellentesque et neque vitae, elementum placerat eros. Proin eleifend odio nec velit lacinia suscipit. Morbi mollis ante nec dapibus gravida. In tincidunt augue eu elit porta, vel condimentum purus posuere. Maecenas tincidunt, erat sed elementum sagittis, tortor erat faucibus tellus, nec molestie mi purus sit amet tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris a tincidunt metus. Fusce congue metus aliquam ex auctor eleifend.</p>
           </div>
           <div class="actions" >
-              <button class="ui primary button menus" @click="submit" style="
+              <button class="ui primary button menus" @click="submit()" style="
               float: right;
               margin-top: 1vh;
               margin-bottom: 2vh;
@@ -171,22 +183,25 @@ import DropdownCustomer from '@/components/dropdown/DropdownCustomer'
 $(document).ready(function () {
   $('.ui.dropdown.bose').dropdown()
   // $('.ui.labeled.icon.sidebar').sidebar('toggle')
-  $('.small.modal').modal('hide')
+  $('.small.modal').modal()
+  $('.mini.modal').modal()
 })
 export default {
   data () {
     return {
       cusname: '',
+      username: '',
       no_user: '',
       getservices: '',
       getservicesname: '',
       getcustomername: 'ttes',
       getservicestype: '',
       fullname: '',
-      customer_test: ['bose', 'tara', 'jam', 'both', 'fluke'],
-      check: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      customer_test: ['bose', 'tar', 'jam', 'both', 'fluke'],
       sendapp: [],
-      errorHuman: [{head: 'Please insert number type ', tail: 'Integer'}]
+      errorHuman: [{head: 'Please insert number type ', tail: 'Integer'}],
+      selectall: false,
+      check: [false, false, false, false, false]
     }
   },
   components: {
@@ -195,6 +210,20 @@ export default {
   created () {
     this.getcustomer()
   },
+  watch: {
+    selectall: function (newQuestion) {
+      var i = 0
+      if (this.selectall === false) {
+        for (i = 0; i < this.customer_test.length; i++) {
+          this.check[i] = false
+        }
+      } else {
+        for (i = 0; i < this.customer_test.length; i++) {
+          this.check[i] = true
+        }
+      }
+    }
+  },
   methods: {
     // actdrop (status) {
     //   $('.act.dropdown').dropdown('show')
@@ -202,23 +231,12 @@ export default {
     showAlertInCustomer (name) {
       alert(name)
     },
-    pro () {
-      this.$router.push('/provisionapp')
-    },
-    depro () {
-      this.$router.push('/de-provisionapp')
-    },
-    deletes () {
-      this.$router.push('/deletes')
-    },
-    createcus () {
-      this.$router.push('/createcus')
-    },
     createUser_Modal (status) {
       $('.small.modal').modal(status)
     },
-    // deletecus () {
-    // },
+    deleteUser_Modal (status) {
+      $('.mini.modal').modal(status)
+    },
     getcustomer () {
       this.getcustomername = 'ok'
       this.$http.post(process.env.IPFLASK + '/GetCustomer').then((response) => {
@@ -269,6 +287,23 @@ export default {
       }).catch(() => {
         alert('jam')
       })
+    },
+    submit_delete () {
+      if (this.username === '') {
+        this.$http.post(process.env.IPFLASK + '/deletecus', {cus: this.cusname}).then((response) => {
+          this.$swal('--result--', response.body, 'success')
+        }, (response) => {
+          this.$swal('--result--', response.body, 'error')
+        })
+        this.deleteUser_Modal('hide all')
+      } else {
+        this.$http.post(process.env.IPFLASK + '/deleteuser', {cus: this.cusname, user: this.username}).then((response) => {
+          this.$swal('--result--', response.body, 'success')
+        }, (response) => {
+          this.$swal('--result--', response.body, 'error')
+        })
+        this.deleteUser_Modal('hide all')
+      }
     }
   }
 }

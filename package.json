@@ -18,6 +18,7 @@
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-dropdown": "^2.2.12",
     "semantic-ui-modal": "^2.2.12",
+    "semantic-ui-rating": "^2.2.12",
     "semantic-ui-segment": "^2.2.12",
     "semantic-ui-sidebar": "^2.2.12",
     "vee-validate": "^2.0.0-rc.19",
