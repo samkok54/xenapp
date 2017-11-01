@@ -14,6 +14,10 @@
     margin-right: 1vw; 
     height:100%;">
       <h1 class="ui dividing header">Customer</h1>
+
+      <chartproject/>
+      <br><br>
+
       <button class="ui basic button" @click="createUser_Modal('show')" style="float:left;">
         <i class="cloud upload icon"></i>
         Create Customer
@@ -37,8 +41,7 @@
         <i class="users icon"></i>
       </div>
 
-
-      <table class="ui teal striped table selectable" style="margin-top: 7vh;">
+      <table class="ui teal striped table selectable" style="margin-top: 5vh;">
         <thead>
           <tr>
             <th style="width: 1vh;">
@@ -57,15 +60,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item,index) in getcustomername['name']">
-          <!-- <tr v-for="(item,index) in customer_test" > -->
+          <!-- <tr v-for="(item,index) in getcustomername['name']"> -->
+          <tr v-for="(item,index) in customer_test" >
             <td>
               <div class="ui checkbox">
                 <input type="checkbox" v-model="check[index]">
                 <label></label>
               </div>
             </td>
-            <td> <a @click="selectcus(getcustomername['name'][index])" class="linkcus">{{getcustomername['name'][index]}}</a></td>
+            <!-- <td> <a @click="selectcus(getcustomername['name'][index])" class="linkcus">{{getcustomername['name'][index]}}</a></td>
             <td>{{getcustomername['fullname'][index]}}</td>
             <td>{{getcustomername['id'][index]}}</td>
             <td>{{getcustomername['name'][index]}}</td>
@@ -73,16 +76,17 @@
             <td>{{getcustomername['approvalpending'][index]}}</td>
             <td style="text-align:center;"> 
             <DropdownCustomer :customer="getcustomername['fullname'][index]" @showAlert="showAlertInCustomer"/>
-            </td>
+            </td> -->
             
-            <!-- <td style="color: dodgerblue;">{{customer_test[index]}}</td>
+            <td style="color: dodgerblue;">{{customer_test[index]}}</td>
             <td>bose company</td>
             <td>69</td>
             <td>bose.local</td>
             <td>Running</td>
+            <td>False</td>
             <td style="text-align:center;"> 
             <DropdownCustomer customer='bose' @showAlert="showAlertInCustomer"/>
-            </td> -->
+            </td>
           </tr>
 
           <!-- <tr v-for="(item,index) in getcustomername['name']">
@@ -205,11 +209,13 @@
 </template>
 <script>
 import DropdownCustomer from '@/components/dropdown/DropdownCustomer'
+import chartproject from '@/components/chart/chartproject'
 $(document).ready(function () {
   $('.ui.dropdown.bose').dropdown()
   // $('.ui.labeled.icon.sidebar').sidebar('toggle')
   $('.small.modal').modal()
   $('.mini.loading.modal').modal()
+  $('.ui.search').search({type: 'category'})
 })
 export default {
   props: [name],
@@ -231,7 +237,8 @@ export default {
     }
   },
   components: {
-    DropdownCustomer
+    DropdownCustomer,
+    chartproject
   },
   created () {
     // this.get_user = this.$route.params.name

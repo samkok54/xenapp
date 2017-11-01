@@ -10,37 +10,41 @@
     </div>
 
     
-    <!-- <div class="ui segment padding" style="margin-top: 0vh; 
+    <div class="ui segment padding" style="margin-top: 0vh; 
     margin-left: 0.5vw;
     margin-right: 1vw; 
     height:100%;">
+    <label style="
+    font-size: 2.5vh;
+    float: left;">Usage Summary</label>
+    <br>
       <div class="ui statistics">
         <div class="statistic">
           <div class="value">
-            22
+            5
           </div>
           <div class="label">
-            Faves
+            CUSTOMERS
           </div>
         </div>
         <div class="statistic">
           <div class="value">
-            31,200
+            76
           </div>
           <div class="label">
-            Views
+            USERS
           </div>
         </div>
         <div class="statistic">
           <div class="value">
-            22
+            12
           </div>
           <div class="label">
-            Members
+            APPLICATION
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <div class="ui segment padding" style="margin-top: 0h; 
     margin-left: 0.5vw;
