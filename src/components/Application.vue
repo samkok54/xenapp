@@ -1,7 +1,20 @@
 <template>
   <div>
 
-    <div class="ui segment" style="margin-left: -2.2vh;margin-top: -3vh;margin-right: 1.2vh; height:100%;">
+
+    <!-- <div class="ui segment padding" style="margin-top: 6vh; 
+    margin-left: 0.5vw;
+    margin-right: 1vw; 
+    height:100%;">
+      <h1 class="ui dividing header">Application</h1>
+      <div id="doughnutChart" class="chart"></div>
+    </div>
+ -->
+
+    <div class="ui segment padding" style="margin-top: 6vh; 
+    margin-left: 0.5vw;
+    margin-right: 1vw; 
+    height:100%;">
       <h1 class="ui dividing header">Application</h1>
       <h2 class="ui header">XenApp</h2>
        <table class="ui blue celled padded table">
@@ -134,6 +147,7 @@ export default {
   },
   created () {
     this.getcustomer()
+    localStorage.setItem('page', 'a')
   },
   methods: {
     pro () {
@@ -193,9 +207,16 @@ ul {
   padding: 0;
 }
 .small {
-  height: 90px !important;
-  width: 90px !important;
+  height: 70px !important;
+  width: 70px !important;
 }
+
+.padding {
+  padding-left: 1.2vw;
+  padding-top: 3vh;
+  padding-right: 1.2vw;
+}
+
 td {
   width: 150px;
   padding-top: 2vh !important;

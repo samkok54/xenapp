@@ -1,22 +1,23 @@
 <template>
 
   <div class="ui dropdown" >
-   <i class="big world icon" ></i>
+   <i class="big alarm outline icon" ></i>
    <div class="floating ui red label" style="
-    width: 3vh;
+    text-align: center;
+    width: 2.5vh;
     height: 2.5vh;
-    padding-left: 0.7vh;
-    padding-top: 5px;">69</div>
-  <div class="menu" style="margin-top: 1vh;margin-right: -1vh;">
+    padding-left: 0.5vh;
+    padding-top: 6px;">9+</div>
+  <div class="menu" style="
+    margin-left: -24vh;
+    margin-top: 1vh;">
     <div class="ui error message" >
       <div class="header">Error</div>
       <p>You must log-in to see all categories</p>
-    </div>
-    <div class="ui error message" >
+      <div class="ui divider"></div>
       <div class="header">Error</div>
       <p>You must log-in to see all categories</p>
-    </div>
-    <div class="ui error message" >
+      <div class="ui divider"></div>
       <div class="header">Error</div>
       <p>You must log-in to see all categories</p>
     </div>

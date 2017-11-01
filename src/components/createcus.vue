@@ -1,7 +1,18 @@
 <template>
   <div>
 
-    <div class="ui segment" style="margin-left: -2.2vh;margin-top: -3vh;margin-right: 1.2vh; height:100%;">
+  <!--   <div class="ui segment padding" style="margin-top: 6vh; 
+    margin-left: 0.5vw;
+    margin-right: 1vw; 
+    height:100%;">
+      <h1 class="ui dividing header">Customer</h1>
+    </div>
+ -->
+
+    <div class="ui segment padding" style="margin-top: 6vh; 
+    margin-left: 0.5vw;
+    margin-right: 1vw; 
+    height:100%;">
       <h1 class="ui dividing header">Customer</h1>
       <button class="ui basic button" @click="createUser_Modal('show')" style="float:left;">
         <i class="cloud upload icon"></i>
@@ -27,7 +38,7 @@
       </div>
 
 
-      <table class="ui teal striped table" style="margin-top: 7vh;">
+      <table class="ui teal striped table selectable" style="margin-top: 7vh;">
         <thead>
           <tr>
             <th style="width: 1vh;">
@@ -38,35 +49,40 @@
             </th>
             <th>Name</th>
             <th>Fullname</th>
-            <th>User</th>
+            <th>ID</th>
             <th>Primary Domain</th>
             <th>Status</th>
+            <th>Approvalpending</th>
             <th style="text-align:center;">Action</th>
           </tr>
         </thead>
         <tbody>
-          <!-- <tr v-for="(item,index) in getcustomername['name']"> -->
-          <tr v-for="(item,index) in customer_test" >
+          <tr v-for="(item,index) in getcustomername['name']">
+          <!-- <tr v-for="(item,index) in customer_test" > -->
             <td>
               <div class="ui checkbox">
                 <input type="checkbox" v-model="check[index]">
                 <label></label>
               </div>
             </td>
-            <!-- <td>{{getcustomername['name'][index]}}</td>
+            <td> <a @click="selectcus(getcustomername['name'][index])" class="linkcus">{{getcustomername['name'][index]}}</a></td>
             <td>{{getcustomername['fullname'][index]}}</td>
             <td>{{getcustomername['id'][index]}}</td>
             <td>{{getcustomername['name'][index]}}</td>
-            <td>{{getcustomername['status'][index]}}</td> -->
+            <td>{{getcustomername['status'][index]}}</td>
+            <td>{{getcustomername['approvalpending'][index]}}</td>
+            <td style="text-align:center;"> 
+            <DropdownCustomer :customer="getcustomername['fullname'][index]" @showAlert="showAlertInCustomer"/>
+            </td>
             
-            <td style="color: dodgerblue;">{{customer_test[index]}}</td>
+            <!-- <td style="color: dodgerblue;">{{customer_test[index]}}</td>
             <td>bose company</td>
             <td>69</td>
             <td>bose.local</td>
             <td>Running</td>
             <td style="text-align:center;"> 
             <DropdownCustomer customer='bose' @showAlert="showAlertInCustomer"/>
-            </td>
+            </td> -->
           </tr>
 
           <!-- <tr v-for="(item,index) in getcustomername['name']">
@@ -108,6 +124,15 @@
       </div>
     </div>
 
+    <div class="ui mini loading modal">
+      <div class="header">Header</div>
+      <div class="ui segment" >
+          <div class="ui active dimmer">
+            <div class="ui text loader">Loading</div>
+          </div>
+          <p></p>
+        </div>
+    </div>
 
     <div class="ui small modal">
       <i class="close icon"  @click="createUser_Modal('hide all')" style="
@@ -184,9 +209,10 @@ $(document).ready(function () {
   $('.ui.dropdown.bose').dropdown()
   // $('.ui.labeled.icon.sidebar').sidebar('toggle')
   $('.small.modal').modal()
-  $('.mini.modal').modal()
+  $('.mini.loading.modal').modal()
 })
 export default {
+  props: [name],
   data () {
     return {
       cusname: '',
@@ -208,7 +234,9 @@ export default {
     DropdownCustomer
   },
   created () {
+    // this.get_user = this.$route.params.name
     this.getcustomer()
+    localStorage.setItem('page', 'c')
   },
   watch: {
     selectall: function (newQuestion) {
@@ -231,8 +259,15 @@ export default {
     showAlertInCustomer (name) {
       alert(name)
     },
+    selectcus (name) {
+      this.$router.push('/getuser/' + name)
+      // alert(name)
+    },
     createUser_Modal (status) {
       $('.small.modal').modal(status)
+    },
+    loading (status) {
+      $('.mini.loading.modal').modal(status)
     },
     deleteUser_Modal (status) {
       $('.mini.modal').modal(status)
@@ -258,14 +293,15 @@ export default {
           //   this.$swal('error!', 'การส่งข้อมูลไม่สำเร็จ', 'error')
           // })
           if (this.no_user === '') {
-            this.$http.post(process.env.IPFLASK + '/createcus', {full: this.fullname, cus: this.cusname}).then((response) => {
+            this.$http.post(process.env.IPFLASK + '/createcusbose', {full: this.fullname, cus: this.cusname}).then((response) => {
               this.$swal('--result--', response.body, 'success')
             }, (response) => {
               this.$swal('--result--', response.body, 'error')
             })
           } else {
-            this.$http.post(process.env.IPFLASK + '/createuser', {full: this.fullname, cus: this.cusname, user: this.no_user}).then((response) => {
+            this.$http.post(process.env.IPFLASK + '/createcusboses', {full: this.fullname, cus: this.cusname, user: this.no_user}).then((response) => {
               this.$swal('--result--', response.body, 'success')
+              this.createUser_Modal('hide all')
             }, (response) => {
               this.$swal('--result--', response.body, 'error')
             })
@@ -316,6 +352,15 @@ h1, h2 {
   text-align: left;
 }
 
+.linkcus {
+  color: #2e9afe;
+  font-weight: bold;
+}
+.linkcus:hover {
+  color: #045fb4;
+  text-decoration: underline;
+  cursor: pointer;
+}
 /*f_blue {
   font-weight: normal;
   text-align: left;
@@ -326,6 +371,11 @@ ul {
   padding: 0;
 }
 
+.padding {
+    padding-left: 1.2vw;
+    padding-top: 3vh;
+    padding-right: 1.2vw;
+}
 
 .errorUI{
     position: absolute !important;

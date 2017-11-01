@@ -6,9 +6,9 @@
   <div class="six wide column"></div>
 
 <div class="four wide column" style="padding-top: 18%;">
-<div class="ui segment" style="opacity: 0.99; background: rgba(255,255,255,0.85)">
+<div class="ui segment" style="opacity: 0.99; background: rgba(255,255,255,0.85) overflow-y: auto;">
     <div class="ui two column middle aligned very relaxed stackable grid">
-  <div class="column" style="width: 100%;height: 100%;padding-top: 5%;">
+  <div class="column" style="width: 100%;height: 100%;padding-top: 5%; overflow-x: fixed;">
     <div class="ui form">
 
       <h1>
@@ -59,6 +59,8 @@ export default {
       check: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
       sendapp: []
     }
+  },
+  created () {
   },
   methods: {
     pro () {

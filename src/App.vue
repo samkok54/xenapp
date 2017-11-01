@@ -22,7 +22,7 @@ export default {
   margin-top: 0px;
   background-image: url("./assets/blur_1.jpg");
   /*opacity : 0.2;*/
-  height: 120vh;
+  height: 101.5vh;
   /*background-size: 100%;*/
   /*background-size:     cover;*/
   /*background-size: 100% 100%;*/
@@ -33,4 +33,5 @@ export default {
 h1 {
   color: black;
 }
+
 </style>

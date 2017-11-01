@@ -9,6 +9,7 @@ import deprovisionapp from '@/components/deprovision'
 import createcus from '@/components/createcus'
 import login from '@/components/login'
 import menubar from '@/components/menubar'
+import getuser from '@/components/getuser'
 
 Vue.use(Router)
 
@@ -23,13 +24,14 @@ export default new Router({
     { path: '/login', component: login },
     { path: '/menubar',
       component: menubar,
-      children: [{path: '/', component: createcus},
+      children: [{path: '/', component: project},
         {path: '/deletes', component: deletes},
         {path: '/provision_app/:customer', component: provisionapp},
         {path: '/createcus', component: createcus},
         {path: '/deprovision/:customer', component: deprovisionapp},
         {path: '/Application', component: Application},
-        {path: '/project', component: project}
+        {path: '/project', component: project},
+        {path: '/getuser/:customer', component: getuser}
       ]
     }
   ]

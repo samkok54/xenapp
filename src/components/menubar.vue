@@ -4,8 +4,12 @@
   <div class="navbar">
   <!-- <a href="#home" style="margin-left: 8%;">Home</a>
   <a href="#news">News</a> -->
-  <b style="float:right; padding-right: 3vh">
+  <!-- <b style="float:right; padding-right: 3vh">
   <button class="ui inverted button" @click="Login" style="font-size: 1.6vh;">Logout</button>
+  </b> -->
+
+  <b style="float:right; padding-right: 3vh; margin-top: 1.5vh;">
+    <logoutdropdown/>  
   </b>
 
   <b style="float:right; margin-top: 0.8vh;">
@@ -31,17 +35,17 @@
   <p>Some text some text some text some text..</p>
 </div>
 
-<div class="ui grid" style="margin-top: 5vh;">
+<div class="ui grid" >
   <div class="sixteen wide column" style="margin-top: -2vh;"></div>
-  <div class="three wide column" style="height: 60vh; margin-top: -1vh;">
+  <div class="two wide column" style="height: 97.5vh; margin-top: -1vh;">
 
 
-    <div class="ui secondary vertical menu" style=" margin-top: -1.5vh;
+    <div class="ui secondary vertical menu" style=" margin-top: 4.5vh;
     background: whitesmoke;
     text-align: left;
-    width: 100%;
+    width: 12.2vw;
     height: 100%;">
-      <label><h3 style="padding-left: 10%;padding-top: 2vh;
+      <!-- <label><h3 style="padding-left: 10%;padding-top: 2vh;
         padding-bottom: 2vh; 
         background-color: lightseagreen;
         color: white;">
@@ -51,32 +55,33 @@
           float: right;
           padding-right: 5vh;"></i>
       </h3>
-      </label>
+      </label> -->
       <br>
       <router-link to="/project" active-class="active">
         <a :class="stateP" @click="clickChSidebar('p')">
-          <i class="large folder open icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh; "></i>
-          Project
+          <i class="large home icon" style="float: left;padding-right: 4vh;margin-top: -0.4vh; "></i>
+          <bold><b>Project</b></bold>
         </a>
       </router-link>
       <router-link to="/createcus" active-class="active">
         <a :class="stateC" @click="clickChSidebar('c')">
-          <i class="large users icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh;"></i>
-          Customer
+          <i class="large user circle outline icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh;"></i>
+          <bold><b>Customer</b></bold>
         </a>
       </router-link>
       <router-link to="/Application" active-class="active">
         <a :class="stateA" @click="clickChSidebar('a')">
-          <i class="large in cart icon" style="float: left;padding-right: 4vh; 
+          <i class="large shopping bag icon" style="float: left;padding-right: 4vh; 
           margin-top: -0.5vh;"></i>
-          Application
+          <bold><b>Application</b></bold>
         </a>
       </router-link>
     </div>
   </div>
 
 
-  <div class="thirteen wide column" style="background-color: none; margin-top: 1.5vh;">
+  <div class="fourteen wide column" style="
+    background-color: rgba(226, 226, 226, 1);">
     <router-view></router-view>
   </div>
     
@@ -87,6 +92,7 @@
 
 <script>
 import noti from '@/components/dropdown/noti'
+import logoutdropdown from '@/components/dropdown/logoutdropdown'
 $(document).ready(function () {
   $('.ui.dropdown').dropdown()
   // $('.ui.dropdown.bose').dropdown()
@@ -110,12 +116,16 @@ export default {
       nav2: 'item',
       nav3: 'item',
       stateA: 'item sidebarleft',
-      stateP: 'item sidebarleft',
-      stateC: 'item sidebarleft active'
+      stateP: 'item sidebarleft active',
+      stateC: 'item sidebarleft'
     }
   },
+  created () {
+    this.clickChSidebar(localStorage.getItem('page'))
+  },
   components: {
-    noti
+    noti,
+    logoutdropdown
   },
   methods: {
     chNav (i) {
@@ -208,6 +218,9 @@ f1 {
 ul {
   list-style-type: none;
   padding: 0;
+}
+bold {
+  font-size: 16px;
 }
 
 /*li {

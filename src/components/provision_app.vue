@@ -1,19 +1,32 @@
 <template>
   <div>
 
-    <div class="ui segment" style="margin-left: -2.2vh;margin-top: -3vh;margin-right: 1.2vh; height:100%;">
-      <h1>Provission {{customer_name}}</h1>
+
+    <div class="ui segment padding" style="margin-top: 6vh; 
+    margin-left: 0.5vw;
+    margin-right: 1vw; 
+    height:100%;">
+      <h1 class="ui dividing header">Provission {{customer_name}}</h1>
       <hr style="opacity: 0.3;margin-bottom: 2vh;">
 
       <form class="ui form">
-        <div class="field">
+      <!--   <div class="field">
           <label style="text-align: left;">Customer name</label>
           <input type="text" v-model="cusname" placeholder="Customer Name">
         </div>
         <div class="field">
           <label style="text-align: left;">User name</label>
           <input type="text" v-model="username" placeholder="User Name">
+        </div> -->
+        <div style="text-align: left; overflow:scroll;">
+        <div class="field" v-for="(name,index) in getusername" >
+          <div class="ui checkbox">
+            <input type="checkbox" v-model="checkuser[index]">
+            <label>{{name}}</label>
+          </div>
         </div>
+      </div>
+        <hr style="opacity: 0.3;margin-bottom: 2vh;">
         <div class="fields" style="text-align: left;">
           <div class="field" style="text-align: left;">
             <div class="ui checkbox">
@@ -37,12 +50,16 @@
         <hr>
         <div class="field" v-for="(name,index) in getservicesname" style="text-align: left;">
           <div class="ui checkbox">
-            <input type="checkbox" v-model="check[index]">
+            <input type="checkbox" v-model="checkapp[index]">
             <label>{{name}}</label>
           </div>
         </div>
 
       </form>
+
+
+
+
       <button class="ui primary button menus" @click="submit">
         Submit
       </button>
@@ -60,12 +77,14 @@ export default {
       getservices: '',
       getservicesname: '',
       getservicestype: '',
-      check: [false, false, false, false, false, false, false, false, false, false, false, false],
+      checkuser: [false, false, false, false, false, false, false, false, false, false, false, false],
+      checkapp: [false, false, false, false, false, false, false, false, false, false, false, false],
       sendapp: [],
       selectall: '',
       selectallvdi: '',
       selectallxenapp: '',
-      customer_name: ''
+      customer_name: '',
+      getusername: ['jam', 'bose', 'james', 'ying', 'teng', 'preaw', 'both']
     }
   },
   created () {
