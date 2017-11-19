@@ -4,6 +4,7 @@ import Application from '@/components/Application'
 import deletes from '@/components/deletes'
 // import indexs from '@/components/indexs'
 import provisionapp from '@/components/provision_app'
+import provisionuser from '@/components/provisionUser'
 import project from '@/components/project'
 import deprovisionapp from '@/components/deprovision'
 import createcus from '@/components/createcus'
@@ -27,6 +28,7 @@ export default new Router({
       children: [{path: '/', component: project},
         {path: '/deletes', component: deletes},
         {path: '/provision_app/:customer', component: provisionapp},
+        {path: '/provision_user/:customer', component: provisionuser},
         {path: '/createcus', component: createcus},
         {path: '/deprovision/:customer', component: deprovisionapp},
         {path: '/Application', component: Application},

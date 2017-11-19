@@ -86,7 +86,7 @@ export default {
     }
   },
   created () {
-    this.start()
+    // this.start()
     // drawChart()
     // alert('created' + localStorage.getItem('status'))
   },

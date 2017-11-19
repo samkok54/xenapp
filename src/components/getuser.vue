@@ -1,12 +1,12 @@
 <template>
   <div>
- <div class="ui segment padding" style="margin-top: 6vh; 
+ <div class="ui segment padding Kanitonly" style="margin-top: 6vh; 
     margin-left: 0.5vw;
     margin-right: 1vw; 
     height:100%;">
-      <h1 class="ui dividing header" style="text-align: left;">User</h1>
-      <h2 class="ui header" style="text-align: left;">{{get_user}} Company</h2>
-      <button class="ui basic button" @click="createUser_Modal('show')" style="float:left;">
+      <h1 class="ui dividing header Kanitonly" style="text-align: left;">User</h1>
+      <h2 class="ui header Kanitonly" style="text-align: left;">{{cus}} Company</h2>
+      <button class="ui basic button Kanitonly" @click="createUser_Modal('show')" style="float:left;">
         <i class="cloud upload icon"></i>
         Create User
       </button>
@@ -15,7 +15,7 @@
         Delete User
       </button>
 
-      <div class="ui segment" v-if="this.loading === true">
+      <div class="ui segment" v-if="loading === true">
         <div class="ui active dimmer">
           <div class="ui text loader">Loading</div>
         </div>
@@ -32,24 +32,28 @@
                 <label></label>
               </div>
             </th>
+            <th>Fullname</th>
             <th>Name</th>
-            <th>Registration Date</th>
-            <th>E-mail address</th>
-            <th>Premium Plan</th>
+            <th>ID</th>
+            <th>upn</th>
+            <th>status</th>
+            <th>Approvalpending</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item,index) in this.user">
+          <tr v-for="(item,index) in get_user">
             <td>
               <div class="ui checkbox">
                 <input type="checkbox" v-model="check[index]">
                 <label></label>
               </div>
             </td>
-            <td>{{item}}</td>
-            <td>September 14, 2013</td>
-            <td>jhlilk22@yahoo.com</td>
-            <td>No</td>
+            <td>{{item['fullname']}}</td>
+            <td>{{item['name']}}</td>
+            <td>{{item['id']}}</td>
+            <td>{{item['upn']}}</td>
+            <td>{{item['status']}}</td>
+            <td>{{item['approvalpending']}}</td>
           </tr>
         </tbody>
       </table>
@@ -64,38 +68,38 @@ export default {
   data () {
     return {
       get_user: '',
-      user: ['bose', 'tar', 'jam', 'both', 'fluke'],
+      cus: '',
       selectall: false,
-      check: [false],
+      check: [],
       loading: false
     }
   },
   created () {
-    this.get_user = this.$route.params.customer
+    this.cus = this.$route.params.customer
     this.getuser()
   },
   watch: {
-    selectall: function (newQuestion) {
-      var i = 0
-      if (this.selectall === false) {
-        for (i = 0; i < this.user.length; i++) {
-          this.check[i] = false
-        }
-      } else {
-        for (i = 0; i < this.user.length; i++) {
-          this.check[i] = true
-        }
-      }
-    }
+    // selectall: function (newQuestion) {
+    //   var i = 0
+    //   if (this.selectall === false) {
+    //     for (i = 0; i < this.user.length; i++) {
+    //       this.check[i] = false
+    //     }
+    //   } else {
+    //     for (i = 0; i < this.user.length; i++) {
+    //       this.check[i] = true
+    //     }
+    //   }
+    // }
   },
   methods: {
     getuser () {
       this.getcustomername = 'ok'
-      this.$http.post(process.env.IPFLASK + '/GetCustomer').then((response) => {
-        this.getcustomername = response.body
-        // alert(response.body)
+      this.$http.post(process.env.IPFLASK + '/Getuser', {cus: this.cus}).then((response) => {
+        this.get_user = response.body['data']
+        console.log(this.get_user)
       }, (response) => {
-        this.getcustomername = 'error'
+        this.get_user = 'error'
       })
     }
   }

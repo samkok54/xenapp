@@ -9,13 +9,13 @@
     </div>
  -->
 
-    <div class="ui segment padding" style="margin-top: 6vh; 
+    <div class="ui segment padding Kanitonly" style="margin-top: 6vh; 
     margin-left: 0.5vw;
     margin-right: 1vw; 
     height:100%;">
-      <h1 class="ui dividing header">Customer</h1>
+      <h1 class="ui dividing header Kanitonly">Customer</h1>
 
-      <chartproject/>
+      <!-- <chartproject/> -->
       <br><br>
 
       <button class="ui basic button" @click="createUser_Modal('show')" style="float:left;">
@@ -61,7 +61,7 @@
         </thead>
         <tbody>
           <!-- <tr v-for="(item,index) in getcustomername['name']"> -->
-          <tr v-for="(item,index) in customer_test" >
+          <tr v-for="(item,index) in getcustomername['data']" >
             <td>
               <div class="ui checkbox">
                 <input type="checkbox" v-model="check[index]">
@@ -78,14 +78,14 @@
             <DropdownCustomer :customer="getcustomername['fullname'][index]" @showAlert="showAlertInCustomer"/>
             </td> -->
             
-            <td style="color: dodgerblue;">{{customer_test[index]}}</td>
-            <td>bose company</td>
-            <td>69</td>
-            <td>bose.local</td>
-            <td>Running</td>
-            <td>False</td>
+            <td style="color: dodgerblue;"><a @click="selectcus(item['name'])">{{item['name']}}</a></td>
+            <td>{{item['fullname']}}</td>
+            <td>{{item['id']}}</td>
+            <td>{{item['primarydomain']}}</td>
+            <td>{{item['status']}}</td>
+            <td>{{item['approvalpending']}}</td>
             <td style="text-align:center;"> 
-            <DropdownCustomer customer='bose' @showAlert="showAlertInCustomer"/>
+            <DropdownCustomer :customer="item['name']" @showAlert="showAlertInCustomer"/>
             </td>
           </tr>
 
@@ -180,6 +180,7 @@
             <h4 class="ui header">Text Selection</h4>
               <p>A site can specify text selection styles.</p>
               <p>Fusce mollis sagittis elit ut maximus. Nullam blandit lacus sit amet luctus euismod. Duis luctus leo vel consectetur consequat. Phasellus ex ligula, pellentesque et neque vitae, elementum placerat eros. Proin eleifend odio nec velit lacinia suscipit. Morbi mollis ante nec dapibus gravida. In tincidunt augue eu elit porta, vel condimentum purus posuere. Maecenas tincidunt, erat sed elementum sagittis, tortor erat faucibus tellus, nec molestie mi purus sit amet tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris a tincidunt metus. Fusce congue metus aliquam ex auctor eleifend.</p>
+              
           </div>
           <div class="actions" >
               <button class="ui primary button menus" @click="submit()" style="
@@ -283,7 +284,7 @@ export default {
       this.getcustomername = 'ok'
       this.$http.post(process.env.IPFLASK + '/GetCustomer').then((response) => {
         this.getcustomername = response.body
-        // alert(response.body)
+        // alert(this.getcustsomername)
       }, (response) => {
         this.getcustomername = 'error'
       })
@@ -300,13 +301,14 @@ export default {
           //   this.$swal('error!', 'การส่งข้อมูลไม่สำเร็จ', 'error')
           // })
           if (this.no_user === '') {
-            this.$http.post(process.env.IPFLASK + '/createcusbose', {full: this.fullname, cus: this.cusname}).then((response) => {
+            this.$http.post(process.env.IPFLASK + '/createcus', {full: this.fullname, cus: this.cusname}).then((response) => {
               this.$swal('--result--', response.body, 'success')
             }, (response) => {
               this.$swal('--result--', response.body, 'error')
             })
           } else {
-            this.$http.post(process.env.IPFLASK + '/createcusboses', {full: this.fullname, cus: this.cusname, user: this.no_user}).then((response) => {
+            this.$http.post(process.env.IPFLASK + '/createuser', {full: this.fullname, cus: this.cusname, user: this.no_user}).then((response) => {
+              alert(this.fullname + this.cusname + this.no_user)
               this.$swal('--result--', response.body, 'success')
               this.createUser_Modal('hide all')
             }, (response) => {

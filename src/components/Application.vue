@@ -15,93 +15,40 @@
     margin-left: 0.5vw;
     margin-right: 1vw; 
     height:100%;">
-      <h1 class="ui dividing header">Application</h1>
-      <h2 class="ui header">XenApp</h2>
-       <table class="ui blue celled padded table">
-         <tr >
-          <td v-for="(app,index) in XenApp">
+
+   
+      <h1 class="ui dividing header Kanitonly">Application</h1>
+
+<h2 class="ui header Kanitonly">XenDesktop</h2>
+      <table class="ui red celled padded table" style="text-align:center;">
+        <tr v-for="(desktop,index) in XenDesktop">
+          <td v-for="desk in desktop">
+            <img class="ui image small" src="../../static/windows.png"><br>
+           <b>{{desk['displayname']}}</b>
+           <!-- <br>Status : Active -->
+         </td>
+        </tr>
+      </table>
+
+<!-- <input type="datetime" is="datetime" /> -->
+
+      <h2 class="ui header Kanitonly">XenApp</h2>
+       <table class="ui blue celled padded table" style="text-align:center;">
+         <tr v-for="(apps,index) in XenApp">
+          <td v-for="app in apps">
             <img class="ui image small" :src="app['pic']"><br>
-           <b>{{app['name']}}</b>
-          <br>Status : Active
+           <b>{{app['displayname']}}</b>
+          <!-- <br>Status : Active -->
          </td>
          </tr>
        </table>
 
 
-      <h2 class="ui header">XenDesktop</h2>
-      <table class="ui red celled padded table">
-        <tr>
-          <td v-for="(app,index) in XenDesktops">
-            <img class="ui image small" :src="app['pic']"><br>
-           <b>{{app['name']}}</b>
-           <br>Status : Active
-         </td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         </tr>
-      </table>
+      
 
     </div>
 
-    <div class="ui small modal">
-      <i class="close icon"  @click="createUser_Modal('hide all')" style="
-      color: black;
-      margin-top: 4.2vh;
-      margin-right: 4.2vh;"></i>
-      <div class="header">
-        Create User or Customer
-      </div>
-      <div class="ui grid">
-        <div class="nine wide column">
-          <div class="ui segment" style="margin-top: 0.7vh;margin-left: 1vh;">
-            <form class="ui form">
-              <div class="field">
-                <label style="text-align: left;">Full name Customer</label>
-                <input type="text" v-model="fullname" placeholder="Full Name of Customer">
-              </div>
-              <div class="field">
-                <label style="text-align: left;">Customer name</label>
-                <input type="text" v-model="cusname" placeholder="Customer Name">
-              </div>
-              <div class="field">
-                <label style="text-align: left;">Number of user</label>
-                <input type="text" v-model="no_user" placeholder="Number of user">
-              </div>
-            </form>
-        </div>
-      </div>
-
-      <div class="seven wide column">
-          <div class="ui segment" style="margin-top: 0%;margin-right: 1vh;margin-left: -2vh;margin-top: 0.6vh;">
-            <h4 class="ui header">Text Selection</h4>
-              <p>A site can specify text selection styles.</p>
-              <p>Fusce mollis sagittis elit ut maximus. Nullam blandit lacus sit amet luctus euismod. Duis luctus leo vel consectetur consequat. Phasellus ex ligula, pellentesque et neque vitae, elementum placerat eros. Proin eleifend odio nec velit lacinia suscipit. Morbi mollis ante nec dapibus gravida. In tincidunt augue eu elit porta, vel condimentum purus posuere. Maecenas tincidunt, erat sed elementum sagittis, tortor erat faucibus tellus, nec molestie mi purus sit amet tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris a tincidunt metus. Fusce congue metus aliquam ex auctor eleifend.</p>
-          </div>
-          <div class="actions" >
-              <button class="ui primary button menus" @click="submit" style="
-              float: right;
-              margin-top: 1vh;
-              margin-bottom: 2vh;
-              margin-right: 1vh;">
-              Submit
-            </button>
-          </div>
-          <div class="actions" >
-              <button class="ui button menus" @click="createUser_Modal('hide')" style="
-              float: right;
-              margin-top: 1vh;
-              margin-bottom: 2vh;
-              margin-right: 0.5vh;">
-              Cancel
-            </button>
-          </div>
-      </div>
-
-    </div>
-  </div>
-
+    
 
   </div>
 </template>
@@ -123,24 +70,25 @@ export default {
       getcustomername: 'ttes',
       getservicestype: '',
       fullname: '',
-      customer_test: ['bose', 'tara', 'jam', 'both', 'fluke'],
+      time: '',
+      // customer_test: ['bose', 'tara', 'jam', 'both', 'fluke'],
       // check: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
       // sendapp: [],
       XenApp: [
-      {name: 'google chrome', pic: '../../static/googlech.png'},
-      {name: 'paint', pic: '../../static/paint.png'},
-      {name: 'calculator', pic: '../../static/calculator.png'},
-      {name: 'Notepad', pic: '../../static/notepad.png'},
-      {name: 'LibreOffice Writer', pic: '../../static/libreblue.png'},
-      {name: 'LibreOffice Calc', pic: '../../static/libregreen.png'},
-      {name: 'LibreOffice Impress', pic: '../../static/librered.png'},
-      {name: 'windows Media Player', pic: '../../static/winmedia.png'}
+        // [ {name: 'google chrome', pic: '../../static/googlech.png'},
+        //   {name: 'paint', pic: '../../static/paint.png'},
+        //   {name: 'calculator', pic: '../../static/calculator.png'},
+        //   {name: 'Notepad', pic: '../../static/notepad.png'}],
+        // [ {name: 'LibreOffice Writer', pic: '../../static/libreblue.png'},
+        //   {name: 'LibreOffice Calc', pic: '../../static/libregreen.png'},
+        //   {name: 'LibreOffice Impress', pic: '../../static/librered.png'},
+        //   {name: 'windows Media Player', pic: '../../static/winmedia.png'}]
       ],
-      XenDesktops: [
-      {name: 'Window 7', pic: '../../static/win2007.png'},
-      {name: 'Window 8', pic: '../../static/win10.png'},
-      {name: 'Window 10', pic: '../../static/win10.png'},
-      {name: 'Window 12', pic: '../../static/win2012.png'}
+      // app: [
+      //   {name: 'Google Chrome', pic: '../../static/googlech.png'}
+      // ],
+      XenDesktop: [
+      // {name: 'Window', pic: '../../static/windows.png'}
       ]
       // url: '../../static/googlech.png'
     }
@@ -169,12 +117,16 @@ export default {
     // },
     getcustomer () {
       this.getcustomername = 'ok'
-      this.$http.post(process.env.IPFLASK + '/GetCustomer').then((response) => {
-        this.getcustomername = response.body
+      this.$http.post(process.env.IPFLASK + '/GetserviceAll').then((response) => {
+        this.XenApp = response.body['data']
+        this.XenDesktop = response.body['desktop']
         // alert(response.body)
       }, (response) => {
-        this.getcustomername = 'error'
+        this.XenApp = 'error'
       })
+      var testURL = '"dvuivnhuiv_ew"'
+      var output = testURL.substring(0, testURL.lastIndexOf('_') + 0)
+      console.log(output)
     },
     submit () {
       if (this.no_user === '') {
@@ -225,6 +177,9 @@ td img{
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+table, th, td {
+    border-bottom: solid rgba(34,36,38,.1);
 }
 
 </style>

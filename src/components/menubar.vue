@@ -1,7 +1,7 @@
 <template>
   <div>
 
-  <div class="navbar">
+  <div class="navbar Kanitonly">
   <!-- <a href="#home" style="margin-left: 8%;">Home</a>
   <a href="#news">News</a> -->
   <!-- <b style="float:right; padding-right: 3vh">
@@ -23,7 +23,7 @@
   </b>
 
   <b style="float:left;">
-    <div class="ui inverted secondary pointing menu" style="border: none;">
+    <div class="ui inverted secondary pointing menu Kanitonly" style="border: none;">
     <a :class="nav1" @click="chNav('1')">Home</a>
     <a :class="nav2" @click="chNav('2')">Messages</a>
     <a :class="nav3" @click="chNav('3')">Contact</a>
@@ -61,20 +61,20 @@
       <router-link to="/project" active-class="active">
         <a :class="stateP" @click="clickChSidebar('p')">
           <i class="large home icon" style="float: left;padding-right: 4vh;margin-top: -0.4vh; "></i>
-          <bold><b>Project</b></bold>
+          <b class="bold Kanit">Project</b>
         </a>
       </router-link>
       <router-link to="/createcus" active-class="active">
         <a :class="stateC" @click="clickChSidebar('c')">
           <i class="large user circle outline icon" style="float: left;padding-right: 4vh;margin-top: -0.5vh;"></i>
-          <bold><b>Customer</b></bold>
+          <b class="bold Kanit">Customer</b>
         </a>
       </router-link>
       <router-link to="/Application" active-class="active">
         <a :class="stateA" @click="clickChSidebar('a')">
           <i class="large shopping bag icon" style="float: left;padding-right: 4vh; 
           margin-top: -0.5vh;"></i>
-          <bold><b>Application</b></bold>
+          <b class="bold Kanit">Application</b>
         </a>
       </router-link>
     </div>
@@ -220,7 +220,7 @@ ul {
   list-style-type: none;
   padding: 0;
 }
-bold {
+.bold {
   font-size: 16px;
 }
 
@@ -301,7 +301,11 @@ bold {
   margin-left: -19px;
   width: 400px;
 }
-
+.Kanitonly {
+    font-family: 'Kanit', sans-serif !important;
+    /*font-weight: 300 !important;*/
+    /*color:#777 !important;*/
+  }
 /*.listItem{
   color:#000 !important;
   text-align:left !important;

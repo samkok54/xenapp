@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" class="Kanit">
     <!-- <img src="./assets/logo.png"> -->
+
     <router-view/>
   </div>
 
@@ -13,6 +14,16 @@ export default {
 </script>
 
 <style>
+.Kanit {
+    font-family: 'Kanit', sans-serif !important;
+    font-weight: 300 !important;
+    /*color:#777 !important;*/
+  }
+  .Kanitonly {
+    font-family: 'Kanit', sans-serif !important;
+    /*font-weight: 300 !important;*/
+    /*color:#777 !important;*/
+  }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

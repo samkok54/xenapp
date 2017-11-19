@@ -1,11 +1,11 @@
 <template>
   <div>
 
-    <div class="ui segment padding" style="margin-top: 6vh; 
+    <div class="ui segment padding Kanitonly" style="margin-top: 6vh; 
     margin-left: 0.5vw;
     margin-right: 1vw; 
     height:100%;">
-      <h1 class="ui dividing header">Dashboard</h1>
+      <h1 class="ui dividing header Kanitonly">Dashboard</h1>
       <!-- <div id="doughnutChart" class="chart"></div> -->
     </div>
 
